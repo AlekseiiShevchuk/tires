@@ -11,9 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
-        $this->call(RoleSeed::class);
-        $this->call(UserSeed::class);
+
+        if (\App\Role::all()->first() == null) {
+            $this->call(RoleSeed::class);
+        }
+        if (\App\User::all()->first() == null) {
+            $this->call(UserSeed::class);
+        }
 
     }
 }
