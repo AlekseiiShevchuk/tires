@@ -1,0 +1,51 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: tires-nginx
+    restart: always
+    volumes:
+      - ./:/var/www:ro
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - nginx-proxy
+      - default
+    environment:
+      VIRTUAL_HOST: tires.k-3soft.com
+  phpMyAdmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: tires-phpmyadmin
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: spass000
+      VIRTUAL_HOST: pma.tires.k-3soft.com
+    networks:
+      - nginx-proxy
+      - default
+    links:
+      - mysql:db
+    depends_on:
+      - "mysql"
+  php:
+    build: ./docker/php
+    container_name: tires-php
+    restart: always
+    volumes:
+      - ./:/var/www
+      - composer_cache:/home/docker/.composer/cache
+    depends_on:
+      - "mysql"
+  mysql:
+    image: mariadb
+    container_name: tires-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: spass000
+      MYSQL_DATABASE: tires
+
+volumes:
+  composer_cache:
+networks:
+  nginx-proxy:
+    external:
+      name: serverservices_default
