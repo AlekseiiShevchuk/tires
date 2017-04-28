@@ -7,4 +7,5 @@
     </button>
     <a class="navbar-brand" href="{{ url('/home') }}"> @lang('quickadmin.quickadmin_title')</a>
 </div>
-<!-- /.navbar-top-links -->
+
+

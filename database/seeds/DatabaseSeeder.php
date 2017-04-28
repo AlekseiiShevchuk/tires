@@ -18,6 +18,12 @@ class DatabaseSeeder extends Seeder
         if (\App\User::all()->first() == null) {
             $this->call(UserSeed::class);
         }
+        if (\App\TireBrand::all()->first() == null) {
+            $this->call(TireBrandSeed::class);
+        }
+        if (\App\TireSize::all()->first() == null) {
+            $this->call(TireSizeSeed::class);
+        }
 
     }
 }

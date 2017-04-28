@@ -36,4 +36,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/find_tires_by_car_numbers', 'FindTiresByCarNumbersController@index')->name('find_tires_by_car_numbers.index');
     Route::post('/find_tires_by_car_numbers', 'FindTiresByCarNumbersController@find')->name('find_tires_by_car_numbers.find');
+
+    Route::resource('tire_brands', 'TireBrandsController');
+    Route::post('tire_brands_mass_destroy', ['uses' => 'TireBrandsController@massDestroy', 'as' => 'tire_brands.mass_destroy']);
+    Route::resource('tire_sizes', 'TireSizesController');
+    Route::post('tire_sizes_mass_destroy', ['uses' => 'TireSizesController@massDestroy', 'as' => 'tire_sizes.mass_destroy']);
+    Route::resource('tire_products', 'TireProductsController');
+    Route::post('tire_products_mass_destroy', ['uses' => 'TireProductsController@massDestroy', 'as' => 'tire_products.mass_destroy']);
+    Route::resource('shop_blocks', 'ShopBlocksController');
 });

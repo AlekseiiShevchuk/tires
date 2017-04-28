@@ -86,6 +86,42 @@
             </li>
             @endcan
             
+            @can('shop_block_access')
+            <li class="{{ $request->segment(1) == 'shop_blocks' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-angle-right"></i>
+                    <span class="title">@lang('quickadmin.shop-block.title')</span>
+                </a>
+            </li>
+            @endcan
+            
+            @can('tire_brand_access')
+            <li class="{{ $request->segment(1) == 'tire_brands' ? 'active' : '' }}">
+                <a href="{{ route('tire_brands.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.tire-brands.title')</span>
+                </a>
+            </li>
+            @endcan
+            
+            @can('tire_size_access')
+            <li class="{{ $request->segment(1) == 'tire_sizes' ? 'active' : '' }}">
+                <a href="{{ route('tire_sizes.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.tire-sizes.title')</span>
+                </a>
+            </li>
+            @endcan
+            
+            @can('tire_product_access')
+            <li class="{{ $request->segment(1) == 'tire_products' ? 'active' : '' }}">
+                <a href="{{ route('tire_products.index') }}">
+                    <i class="fa fa-dot-circle-o"></i>
+                    <span class="title">@lang('quickadmin.tire-products.title')</span>
+                </a>
+            </li>
+            @endcan
+            
 
     
 

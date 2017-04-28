@@ -140,5 +140,61 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
+        // Auth gates for: Tire brands
+        Gate::define('tire_brand_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_brand_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_brand_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_brand_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_brand_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
+        // Auth gates for: Tire sizes
+        Gate::define('tire_size_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_size_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_size_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_size_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_size_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
+        // Auth gates for: Tire products
+        Gate::define('tire_product_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_product_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_product_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_product_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('tire_product_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
+        // Auth gates for: Shop block
+        Gate::define('shop_block_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
     }
 }
