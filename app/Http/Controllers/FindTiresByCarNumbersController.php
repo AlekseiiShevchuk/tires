@@ -48,7 +48,7 @@ class FindTiresByCarNumbersController extends Controller
         $client = new Client();
         $crawler = $client->request(
             'GET',
-            'http://www.daekonline.dk/cgi-bin/VnpSearch2.pl?search_tool=vnpsearch&dsco=123&VPKX=53616c7465645f5ffd7f374eee6ad039a3a8d2de6ebafb1e80a3ae816596389a957247e3da668e9e&VnpSearch2-NumberPlate=' . $car_number->number . '&suchen=Vis+tilbud'
+                 'http://www.daekonline.dk/cgi-bin/VnpSearch2.pl?search_tool=vnpsearch&dsco=123&cart_id=65915718.123.18173&VPKX=53616c7465645f5f86a625ed81cb47b20e0bcb297efd9868a96b04ae437d06077ceb2c8ccf9beb9c&VnpSearch2-NumberPlate=' . $car_number->number . '&suchen=Vis+tilbud'
         );
 
         if ($crawler->filter('.search > p > b')->count() == 3) {
