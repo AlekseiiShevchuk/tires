@@ -1,7 +1,9 @@
 <?php
-Route::get('/', function () {
+/*Route::get('/', function () {
     return redirect('/home');
-});
+});*/
+
+Route::get('/', 'IndexController@index');
 
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
