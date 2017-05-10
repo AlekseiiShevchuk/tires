@@ -43,24 +43,80 @@
 	border-right: 1px solid white;
 }
 
-.wrap-links:hover {
+.wrap-links:hover, .wrap-links-2:hover {
 	background-color: #777777;
 }
 
-.wrap-links {
+.wrap-links, .wrap-links-2 {
 	height: 50px;
 	margin-left: -.36em;
+	cursor: pointer;
 }
 
-.wrap-links > a {
+.wrap-links > a, .wrap-links-2 > a {
 	padding: 0 15px 0 15px;
 }
 
 .wrap-links > a:hover {
 	color: white;
 	text-decoration: underline;
+	cursor: pointer;
+}
+
+.wrap-links-2 > a:hover {
+	color: white;
+	cursor: pointer;
 }
 
 .wrap-tires {
 	margin-top: 100px;
 }
+
+.search {
+	width: 80%;
+	height: 45px;
+	margin-right: -.36em;
+}
+
+.search-btn {
+	width: 20%;
+	height: 45px;
+	background-color: #333;
+	color: white;
+	font-weight: bold;
+	border: 0;
+	outline: 0;
+}
+
+.tire-img {
+	margin-top: 20px;
+}
+
+.search-content {
+	margin-top: 50px;
+}
+
+.grey-color {
+	color: #333;
+	text-decoration: none;
+}
+
+.links-2 {
+	border-left: 1px solid #333;
+}
+
+.links-2-last {
+	border-left: 1px solid #333;
+	border-right: 1px solid #333;
+}
+
+.wrap-links-2 > a {
+	color: #333;
+	text-decoration: none;
+}
+
+.wrap-collection-2 {
+	height: 50px;
+	line-height: 50px;
+	margin-top: 50px;
+} 
