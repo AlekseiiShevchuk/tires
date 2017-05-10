@@ -12,6 +12,7 @@
 <link href="{{ asset('sbadmin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 <link rel="stylesheet"
       href="{{ url('quickadmin/css') }}/select2.min.css"/>
+<link rel="stylesheet" href="{{ url('quickadmin/css') }}/index.css"/>
 <link href="{{ asset('sbadmin/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
 <link href="{{ asset('sbadmin/dist/css/sb-admin-2.css') }}" rel="stylesheet">
 <link href="{{ asset('sbadmin/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">

@@ -9,7 +9,7 @@
 
 <div id="wrapper">
 
-    <div class="container-fluid">
+    <div class="container-fluid index-wrap">
             @yield('content')
     </div>
 

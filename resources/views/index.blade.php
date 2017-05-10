@@ -24,38 +24,59 @@
         <span data-u="arrowleft" class="jssora22l" style="top:0px;left:8px;width:40px;height:58px;" data-autocenter="2"></span>
         <span data-u="arrowright" class="jssora22r" style="top:0px;right:8px;width:40px;height:58px;" data-autocenter="2"></span>
     </div>
+    <div class="wrap-under-slider">
+        <div class="phone inline-block">
+            <span class="shop-phone">
+                <i class="glyphicon glyphicon-earphone white-color-bold"></i>
+                <span class="light-grey-color">Ring til os:</span>
+                <span class="white-color-bold">+45 32203218</span>
+            </span>
+        </div>
+        <div class="wrap-link inline-block">
+            <ul class="links-collection">
+                <li class="first-link wrap-links"><a class="white-color-bold" href="#">Kontakt os</a></li>
+                <li class="link wrap-links"><a class="white-color-bold" href="#">Log ind</a></li>
+            </ul>
+        </div>
+    </div>
 
-    <section class="section container">
-        <div class="row text-center">
-            @foreach($tires as $tire)
-                <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <img class="thumbnail-img" src="{{asset('uploads/' . $tire->image_1)}}">
-                        </a>
-                        <div class="caption">
-                            <h4 style="height: 38px;overflow: hidden;"><strong>{{ $tire->name }}</strong></h4>
-                            <p class="caption-description">{!! mb_substr($tire->description, 0, 50) !!} ... </p>
-                            <div class="price">
-                                @if($tire->price && $tire->special_price)
-                                    <span class="text-danger"><strike>KR {{ $tire->price }}</strike></span>
-                                    <span class="text-primary"> KR {{$tire->special_price}} </span>
-                                @endif
+    <div class="row">
+        <div class="col-md-12">
+            <div class="wrap-tires">
+                <section class="section container">
+                    <div class="row text-center">
+                        @foreach($tires as $tire)
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                    <a href="#">
+                                        <img class="thumbnail-img" src="{{asset('uploads/' . $tire->image_1)}}">
+                                    </a>
+                                    <div class="caption">
+                                        <h4 style="height: 38px;overflow: hidden;"><strong>{{ $tire->name }}</strong></h4>
+                                        <p class="caption-description">{!! mb_substr($tire->description, 0, 50) !!} ... </p>
+                                        <div class="price">
+                                            @if($tire->price && $tire->special_price)
+                                                <span class="text-danger"><strike>KR {{ $tire->price }}</strike></span>
+                                                <span class="text-primary"> KR {{$tire->special_price}} </span>
+                                            @endif
+                                        </div>
+                                        <p class="thumbnail-category"><storng>Brand: </storng><a href="{{route('tire_brands.show',['id' =>$tire->brand->id])}}">{{ $tire->brand->name }}</a></p>
+                                        <hr>
+                                        <p>
+                                            <a href="#" class="btn btn-default">Mere Info</a>
+                                            <a href="#" class="btn btn-primary" style="padding-left:30px;padding-right:30px;">Bestil nu!</a>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="thumbnail-category"><storng>Brand: </storng><a href="{{route('tire_brands.show',['id' =>$tire->brand->id])}}">{{ $tire->brand->name }}</a></p>
-                            <hr>
-                            <p>
-                                <a href="#" class="btn btn-default">Mere Info</a>
-                                <a href="#" class="btn btn-primary" style="padding-left:30px;padding-right:30px;">Bestil nu!</a>
-                            </p>
+                        @endforeach
+                        <div class="clearfix"></div>
+                        <div class="row text-center">
+                            <div class="container"> {{ $tires->links() }}</div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-            <div class="clearfix"></div>
-            <div class="row text-center">
-                <div class="container"> {{ $tires->links() }}</div>
+                </section>
             </div>
         </div>
-    </section>
+    </div>
 @endsection
