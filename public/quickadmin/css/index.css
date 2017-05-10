@@ -119,4 +119,16 @@
 	height: 50px;
 	line-height: 50px;
 	margin-top: 50px;
-} 
+}
+
+.content-header, .content-p {
+	color: #777777;
+}
+
+.cover {
+	margin-top: 55px;
+}
+
+.cover-2 {
+	margin-top: 65px;
+}
