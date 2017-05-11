@@ -45,7 +45,7 @@
             /* size of bullet elment */
             width: 16px;
             height: 16px;
-            background: url('img/b05.png') no-repeat;
+            background: url('{{asset('slider/b05.png')}}') no-repeat;
             overflow: hidden;
             cursor: pointer;
         }
@@ -72,7 +72,7 @@
             width: 40px;
             height: 58px;
             cursor: pointer;
-            background: url('img/a22.png') center center no-repeat;
+            background: url('{{asset('slider/a22.png')}}') center center no-repeat;
             overflow: hidden;
         }
         .jssora22l { background-position: -10px -31px; }

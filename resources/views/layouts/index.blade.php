@@ -15,6 +15,6 @@
 
 </div>
 <!-- /#wrapper -->
-@include('partials.javascripts')
+@include('partials.front_js')
 </body>
 </html>
