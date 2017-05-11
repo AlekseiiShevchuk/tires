@@ -1,5 +1,10 @@
 @extends('layouts.product')
 
+@section('head')
+    <link rel="stylesheet"
+      href="{{ url('quickadmin/css') }}/slick.css"/> 
+@endsection
+
 @section('content')
 	<main class="product-full">
         <div class="container">

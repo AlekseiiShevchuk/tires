@@ -73,7 +73,7 @@
                         <p class="thumbnail-category"><storng>Brand: </storng><a href="{{route('tire_brands.show',['id' =>$tire->brand->id])}}">{{ $tire->brand->name }}</a></p>
                         <hr>
                         <p>
-                            <a href="#" class="btn btn-default">Mere Info</a>
+                            <a href="{{ action('UsersTireProductController@show', $tire->id) }}" class="btn btn-default">Mere Info</a>
                             <a href="#" class="btn btn-primary" style="padding-left:30px;padding-right:30px;">Bestil nu!</a>
                         </p>
                     </div>
