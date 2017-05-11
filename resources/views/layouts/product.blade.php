@@ -15,5 +15,7 @@
 
 </div>
 
+@include('partials.show_tire_product_js')
+
 </body>
 </html>
