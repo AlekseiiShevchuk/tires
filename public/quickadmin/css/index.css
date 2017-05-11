@@ -253,3 +253,7 @@
 .pointer {
 	cursor: pointer;
 }
+
+.thumbnail-img {
+	height: 200px !important;
+}
