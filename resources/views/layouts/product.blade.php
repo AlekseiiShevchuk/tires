@@ -11,6 +11,7 @@
 
     <div class="container-fluid product-wrap">
             @yield('content')
+            @include('partials.footer')
     </div>
 
 </div>

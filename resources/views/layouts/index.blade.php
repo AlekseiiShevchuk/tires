@@ -13,6 +13,7 @@
 
     <div class="container-fluid index-wrap">
             @yield('content')
+            @include('partials.footer')
     </div>
 
 </div>
