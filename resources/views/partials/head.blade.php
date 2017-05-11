@@ -11,7 +11,7 @@
       content="text/html; charset=utf-8">
 <link href="{{ asset('sbadmin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 <link rel="stylesheet"
-      href="{{ url('quickadmin/css') }}/select2.min.css"/>
+      href="{{ url('quickadmin/css') }}/select2.min.css"/>     
 <link rel="stylesheet" href="{{ url('quickadmin/css') }}/index.css"/>
 <link href="{{ asset('sbadmin/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
 <link href="{{ asset('sbadmin/dist/css/sb-admin-2.css') }}" rel="stylesheet">
@@ -28,6 +28,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.min.css"/>
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.standalone.min.css"/>
+      @yield('head')
 <style>
         /* jssor slider bullet navigator skin 05 css */
         /*
@@ -45,7 +46,7 @@
             /* size of bullet elment */
             width: 16px;
             height: 16px;
-            background: url('img/b05.png') no-repeat;
+            background: url('{{asset('slider/b05.png')}}') no-repeat;
             overflow: hidden;
             cursor: pointer;
         }
@@ -72,7 +73,7 @@
             width: 40px;
             height: 58px;
             cursor: pointer;
-            background: url('img/a22.png') center center no-repeat;
+            background: url('{{asset('slider/a22.png')}}') center center no-repeat;
             overflow: hidden;
         }
         .jssora22l { background-position: -10px -31px; }

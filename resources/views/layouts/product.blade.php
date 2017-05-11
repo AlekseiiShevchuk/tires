@@ -7,17 +7,16 @@
 
 <body>
 
-@include('partials.slider')
-
 <div id="wrapper">
 
-    <div class="container-fluid index-wrap">
+    <div class="container-fluid product-wrap">
             @yield('content')
             @include('partials.footer')
     </div>
 
 </div>
-<!-- /#wrapper -->
-@include('partials.front_js')
+
+@include('partials.show_tire_product_js')
+
 </body>
 </html>
