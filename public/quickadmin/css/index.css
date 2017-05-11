@@ -32,7 +32,8 @@
 }
 
 .wrap-link {
-	margin-left: 700px;
+	float: right;
+	margin-right: 8%;
 }
 
 .first-link {
@@ -152,11 +153,12 @@
 .input-footer {
 	background-color: #333;
 	width: 80%;
-	height: 48px;
+	height: 100%;
 	color: white;
 	font-size: 15px;
 	border: 0;
 	outline: 0;
+	padding-left: 10px;
 }
 
 .small-footer-wrap-input {
@@ -166,18 +168,24 @@
 	border: 1px solid white;
 	height: 50px;
 	margin-top: 10px;
+	position: relative;
 }
 
 .input-footer-btn {
 	text-align: center;
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
 	border-radius: 50%;
 	background-color: #777777;
 	color: #333;
 	font-weight: bold;
 	cursor: pointer;
 	display: inline-block;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	margin-top: -15px;
 }
 
 .input-footer-btn:hover {
@@ -256,4 +264,12 @@
 
 .thumbnail-img {
 	height: 200px !important;
+}
+
+.related-images {
+	height: 200px !important;
+}
+
+.left-margin {
+	margin-left: 4%;
 }
