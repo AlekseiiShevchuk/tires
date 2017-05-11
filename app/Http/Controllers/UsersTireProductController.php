@@ -17,6 +17,8 @@ class UsersTireProductController extends Controller
     {
         $tire_product = TireProduct::findOrFail($id);
 
+        $brand = $tire_product->brand->id;
+
         $images = [];
 
         for ($i = 1; $i <= 6; $i++) {
@@ -26,7 +28,14 @@ class UsersTireProductController extends Controller
         	}
         }
 
-        return view('user_tire_product.show', compact('tire_product'), compact('images'));
+        $related_tire_products = TireProduct::where([
+            'brand_id' => $brand,
+        ])->limit(4)->orderBy(\DB::raw('RAND()'))->get();
+
+        return view('user_tire_product.show')
+        	->with('tire_product', $tire_product)
+        	->with('images', $images)
+        	->with('related_tire_products', $related_tire_products);
     }
 }
 

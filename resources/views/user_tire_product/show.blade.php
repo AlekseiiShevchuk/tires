@@ -49,31 +49,28 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="related-products">
+        <div class="related-products">
             <div class="container">
                 <h3 class="page-header">Related Products</h3>
                 <div class="row text-center">
-                    @foreach($products as $product)
+                    @foreach($related_tire_products as $product)
                         <div class="col-sm-6 col-md-3">
                             <div class="thumbnail">
-                                <a href="{{ action('FrontController@show', $product->id) }}"><img
-                                            src="/{{$product->images()->first()->local_small_img}}"></a>
+                                <a href="{{ action('UsersTireProductController@show', $product->id) }}"><img
+                                            src="{{asset('uploads/' . $product->image_1)}}"></a>
                                 <div class="caption">
                                     <h4 style="height: 38px;overflow: hidden;"><strong>{{ $product->name }}</strong>
                                     </h4>
-                                    <p class="caption-description">{{ mb_substr($product->description, 0, 50) }}
+                                    <p class="caption-description">{!! mb_substr($product->description, 0, 50) !!}
                                         ... </p>
                                     <div class="price">
-                                        <span class="text-danger"><strike>KR {{ $product->old_price }}</strike></span>
-                                        <span class="text-primary"> KR {{$product->new_price}} </span>
+                                        <span class="text-danger"><strike>KR {{ $product->price }}</strike></span>
+                                        <span class="text-primary"> KR {{$product->special_price}} </span>
                                     </div>
                                     <hr>
                                     <p>
-                                        <a href="{{ action('FrontController@show', $product->id) }}"
+                                        <a href="{{ action('UsersTireProductController@show', $product->id) }}"
                                            class="btn btn-default">Mere Info</a>
-                                        <a href="{{ $referal_link_prefix . $product->source_url }}"
-                                           class="btn btn-primary" style="padding-left:30px;padding-right:30px;">Bestil
-                                            nu!</a>
                                     </p>
                                 </div>
                             </div>
@@ -81,6 +78,6 @@
                     @endforeach
                 </div>
             </div>
-        </div> -->
+        </div>
     </main>
 @endsection
