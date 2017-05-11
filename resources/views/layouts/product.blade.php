@@ -7,6 +7,8 @@
 
 <body>
 
+@include('partials.slider')
+
 <div id="wrapper">
 
     <div class="container-fluid product-wrap">

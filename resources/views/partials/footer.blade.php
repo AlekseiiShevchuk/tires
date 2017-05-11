@@ -1,10 +1,10 @@
     <div class="container-fluid small-footer">
         <div class="row">
-            <div class="col-md-6 col-md-offset-1 small-footer-wrap">
-                <span class="content-footer-span">Nyhedsbrev</h3>
+            <div class="col-md-6 small-footer-wrap">
+                <span class="content-footer-span left-margin">Nyhedsbrev</span>
                 <div class="small-footer-wrap-input">
                     <input class="input-footer" type="text" placeholder="Din e-mail">
-                    <span class="input-footer-btn">></span>
+                    <div class="input-footer-btn">></div>
                 </div>
             </div>
             <div class="col-md-3 col-md-offset-2 small-footer-wrap-2">
