@@ -10,7 +10,7 @@ $(document).ready(function() {
 	});
 
 	$('.product-slider-thumb').slick({
-	  slidesToShow: 3,
+	  slidesToShow: 6,
 	  slidesToScroll: 1,
 	  asNavFor: '.product-slider',
 	  dots: false,

@@ -19,7 +19,7 @@
                     </div>
                     <div class="product-slider-thumb">
                         @foreach($images as $item)
-                            <div class="slide-thumb">
+                            <div class="slide-thumb pointer">
                                 <img src="{{asset('uploads/thumb/' . $item)}}" style="width: 100%;"
                                      alt="Thumb image">
                             </div>

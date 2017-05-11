@@ -249,3 +249,7 @@
 .bold {
 	font-weight: bold;
 }
+
+.pointer {
+	cursor: pointer;
+}
