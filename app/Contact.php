@@ -10,4 +10,9 @@ class Contact extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function subject()
+    {
+        return $this->belongsTo('App\ContactSubject');
+    }
 }

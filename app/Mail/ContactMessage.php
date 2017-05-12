@@ -34,7 +34,8 @@ class ContactMessage extends Mailable
         $data = [
             'message' => $this->contact->message,
             'order_reference' => $this->contact->order_reference,
-            'from' => !is_null($this->contact->user_id) ? $this->contact->user->name : 'Guest'
+            'from' => !is_null($this->contact->user_id) ? $this->contact->user->name : 'Guest',
+            'subject' => $this->contact->subject->name
         ];
 
         return $this
