@@ -30,7 +30,7 @@ class UsersTireProductController extends Controller
 
         $related_tire_products = TireProduct::where([
             'brand_id' => $brand,
-        ])->limit(4)->orderBy(\DB::raw('RAND()'))->get();
+        ])->limit(4)->inRandomOrder()->get();
 
         return view('user_tire_product.show')
         	->with('tire_product', $tire_product)

@@ -58,7 +58,7 @@
             @foreach($tires as $tire)
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
-                        <a href="#">
+                        <a href="{{ action('UsersTireProductController@show', $tire->id) }}">
                             <img class="thumbnail-img" src="{{asset('uploads/' . $tire->image_1)}}">
                         </a>
                         <div class="caption">

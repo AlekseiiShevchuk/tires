@@ -7,6 +7,8 @@ Route::get('/', 'IndexController@index');
 
 Route::get('/product/{id}', 'UsersTireProductController@show');
 
+Route::resource('contact', 'ContactController');
+
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
 $this->post('login', 'Auth\LoginController@login')->name('auth.login');
@@ -25,6 +27,7 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index');
     Route::resource('roles', 'RolesController');
+    Route::resource('contacts-subjects', 'ContactsSubjectsController');
     Route::post('roles_mass_destroy', ['uses' => 'RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'UsersController');
     Route::post('users_mass_destroy', ['uses' => 'UsersController@massDestroy', 'as' => 'users.mass_destroy']);
