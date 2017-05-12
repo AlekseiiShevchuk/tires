@@ -40,7 +40,7 @@ class ContactController extends Controller
         $contact->user_id = $user_id;
         $contact->save();
 
-        Mail::to('admin@admin.com')->send(new ContactMessage($contact));
+        //Mail::to('admin@admin.com')->send(new ContactMessage($contact));
 
         return redirect()->route('index_route');
     }

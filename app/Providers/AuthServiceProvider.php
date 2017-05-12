@@ -140,6 +140,11 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
+        //Auth gates for contact messages
+        Gate::define('messages_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
         //Auth gates for: ContactSubject
         Gate::define('contact_subject_access', function ($user) {
             return in_array($user->role_id, [1, 2]);

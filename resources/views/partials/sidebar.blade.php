@@ -131,6 +131,15 @@
                 </a>
             </li>
             @endcan
+
+            @can('messages_access')
+            <li class="{{ $request->segment(1) == 'messages' ? 'active' : '' }}">
+                <a href="{{ route('messages.index') }}">
+                    <i class="fa fa-dot-circle-o"></i>
+                    <span class="title">@lang('quickadmin.messages.title')</span>
+                </a>
+            </li>
+            @endcan
             
 
     
