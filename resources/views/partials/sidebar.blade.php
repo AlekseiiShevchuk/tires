@@ -121,6 +121,25 @@
                 </a>
             </li>
             @endcan
+
+
+            @can('contact_subject_access')
+            <li class="{{ $request->segment(1) == 'contacts-subjects' ? 'active' : '' }}">
+                <a href="{{ route('contacts-subjects.index') }}">
+                    <i class="fa fa-dot-circle-o"></i>
+                    <span class="title">@lang('quickadmin.contacts-subjects.title')</span>
+                </a>
+            </li>
+            @endcan
+
+            @can('messages_access')
+            <li class="{{ $request->segment(1) == 'messages' ? 'active' : '' }}">
+                <a href="{{ route('messages.index') }}">
+                    <i class="fa fa-dot-circle-o"></i>
+                    <span class="title">@lang('quickadmin.messages.title')</span>
+                </a>
+            </li>
+            @endcan
             
 
     
