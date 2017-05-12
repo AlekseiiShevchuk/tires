@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ContactSubject;
 use App\Contact;
+use App\Mail\ContactMessage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -37,6 +39,8 @@ class ContactController extends Controller
         $contact->subject_id = $request->subject_id;
         $contact->user_id = $user_id;
         $contact->save();
+
+        Mail::to('admin@admin.com')->send(new ContactMessage($contact));
 
         return redirect()->route('index_route');
     }
