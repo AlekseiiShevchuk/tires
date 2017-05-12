@@ -273,3 +273,67 @@
 .left-margin {
 	margin-left: 4%;
 }
+
+.send-btn {
+	display: block;
+	padding: 10px 10px 10px 14px;
+	border: 1px solid #74d578;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+	text-transform: none;
+	background-color: #74d578;
+	font-weight: bold;
+}
+
+.send-select {
+	max-width: 270px;
+	width: 100%;
+	height: 25px;
+	font-size: 15px;
+	color: #9c9b9b;
+	vertical-align: middle;
+	box-sizing: border-box;
+	align-items: center;
+	white-space: pre;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-align: start;
+	background-color: white;
+	display: block;
+	margin-bottom: 15px;
+	border: 1px solid #d6d4d4;
+}
+
+.send-text {
+	max-width: 270px;
+	padding: 3px 5px;
+	height: 27px;
+	display: block;
+	width: 100%;
+	font-size: 15px;
+	color: #9c9b9b;
+	vertical-align: middle;
+	border: 1px solid #d6d4d4;
+	letter-spacing: normal;
+    word-spacing: normal;
+    margin-bottom: 15px;
+}
+
+.send-message {
+	height: 257px;
+	max-width: 270px;
+	padding: 3px 5px;
+	display: block;
+	width: 100%;
+	font-size: 15px;
+	color: #9c9b9b;
+	vertical-align: middle;
+	border: 1px solid #d6d4d4;
+	letter-spacing: normal;
+    word-spacing: normal;
+    margin-bottom: 15px;
+}

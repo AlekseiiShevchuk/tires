@@ -3,7 +3,7 @@
     return redirect('/home');
 });*/
 
-Route::get('/', 'IndexController@index');
+Route::get('/', ['uses' => 'IndexController@index', 'as' => 'index_route']);
 
 Route::get('/product/{id}', 'UsersTireProductController@show');
 

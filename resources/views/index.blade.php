@@ -1,46 +1,6 @@
 @extends('layouts.index')
 
 @section('content')
-    <div class="wrap-under-slider">
-        <div class="phone inline-block">
-            <span class="shop-phone">
-                <i class="glyphicon glyphicon-earphone white-color-bold"></i>
-                <span class="light-grey-color">Ring til os:</span>
-                <span class="white-color-bold">+45 32203218</span>
-            </span>
-        </div>
-        <div class="wrap-link inline-block">
-            <ul class="links-collection">
-                <li class="first-link wrap-links"><a class="white-color-bold" href="#">Kontakt os</a></li>
-                <li class="link wrap-links"><a class="white-color-bold" href="#">Log ind</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 tire-img">
-                <img src="{{ asset('index-page/fire-daek-logo-1490775043.jpg') }}">
-            </div>
-            <div class="col-md-3 col-md-offset-2 search-content">
-                <input class="search" type="text" placeholder="Søg">
-                <button class="search-btn"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 wrap-collection-2">
-                <ul class="links-collection">
-                    <li class="wrap-links-2"><a href="#">Sommerdæk</a></li>
-                    <li class="wrap-links-2 links-2"><a href="#">Vinterdæk</a></li>
-                    <li class="wrap-links-2 links-2-last"><a href="#">Helårsdæk</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
         <div class="row">
             <div class="col-md-4 wrap-collection-2">
