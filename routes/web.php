@@ -38,8 +38,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/redirect', 'UserAuthController@redirect');
     Route::resource('roles', 'RolesController');
     Route::resource('contacts-subjects', 'ContactsSubjectsController');
-    Route::resource('account', 'AccountController');
     Route::resource('messages', 'MessagesController');
+    Route::resource('account', 'AccountController');
     Route::post('roles_mass_destroy', ['uses' => 'RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'UsersController');
     Route::post('users_mass_destroy', ['uses' => 'UsersController@massDestroy', 'as' => 'users.mass_destroy']);
@@ -51,7 +51,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('car_numbers_mass_destroy', ['uses' => 'CarNumbersController@massDestroy', 'as' => 'car_numbers.mass_destroy']);
     Route::resource('tires', 'TiresController');
     Route::post('tires_mass_destroy', ['uses' => 'TiresController@massDestroy', 'as' => 'tires.mass_destroy']);
-
 
     Route::get('/find_tires_by_car_numbers', 'FindTiresByCarNumbersController@index')->name('find_tires_by_car_numbers.index');
     Route::post('/find_tires_by_car_numbers', 'FindTiresByCarNumbersController@find')->name('find_tires_by_car_numbers.find');
