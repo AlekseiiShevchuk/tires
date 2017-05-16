@@ -87,12 +87,12 @@
 
             <div class="row">
                 <div class="col-md-6 form-group">
-                    {!! Form::label('new_password_confirm', 'Confirm New Password', ['class' => 'control-label']) !!}
-                    {!! Form::password('new_password_confirm', ['class' => 'form-control']) !!}
+                    {!! Form::label('new_password_confirmation', 'Confirm New Password', ['class' => 'control-label']) !!}
+                    {!! Form::password('new_password_confirmation', ['class' => 'form-control']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('new_password_confirm'))
+                    @if($errors->has('new_password_confirmation'))
                         <p class="help-block">
-                            {{ $errors->first('new_password_confirm') }}
+                            {{ $errors->first('new_password_confirmation') }}
                         </p>
                     @endif
                 </div>
