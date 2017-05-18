@@ -47,13 +47,16 @@ class AccountController extends Controller
         $user = User::findOrFail($id);
 
         if (Hash::check($request->password, $user->password)) {
+            $user->name = $request->name;
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->email = $request->email;
 
-            /*if (!empty($request->new_password) && !empty($request->new_password_confirm)) {
-                die('opoo');
-                $request->password = Hash::make($request->new_password_confirm);
+            if ($request->new_password && $request->new_password_confirmation) {
+                $user->password = Hash::make($request->new_password_confirmation);
             }
 
-            $user->update($request->all());*/
+            $user->save();
 
             return redirect()->route('index_route');
         }
