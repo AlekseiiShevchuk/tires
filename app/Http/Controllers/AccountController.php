@@ -28,11 +28,9 @@ class AccountController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-        	$user = Auth::user();
+        $user = Auth::user();
 
-        	return view('account.account', compact('user'));
-        }
+        return view('account.account', compact('user'));
     }
 
     /**
@@ -46,13 +44,18 @@ class AccountController extends Controller
     {
         $user = User::findOrFail($id);
 
+        if ($user != Auth::user()) {
+            throw new Exception("This is not your account");
+            
+        }
+
         if (Hash::check($request->password, $user->password)) {
             $user->name = $request->name;
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
             $user->email = $request->email;
 
-            if ($request->new_password && $request->new_password_confirmation) {
+            if ($request->new_password) {
                 $user->password = Hash::make($request->new_password_confirmation);
             }
 
