@@ -13,7 +13,7 @@
                 <li class="link wrap-links"><a href="#logout" class="white-color-bold" onclick="$('#logout').submit();">
                     Log af
                 </a></li>
-                <li class="link wrap-links"><a class="white-color-bold" href="{{ action('AccountController@index') }}">{{ Auth::user()->name }}</a></li>
+                <li class="link wrap-links"><a class="white-color-bold" href="{{ action('AccountSettingsController@index') }}">{{ Auth::user()->name }}</a></li>
                 @else
                 <li class="link wrap-links"><a class="white-color-bold" href="{{ action('UserAuthController@index') }}">Log ind</a></li>
                 @endif
