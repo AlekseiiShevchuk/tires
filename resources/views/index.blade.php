@@ -3,11 +3,22 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-4 wrap-collection-2">
-                <ul class="links-collection">
+            <div class="col-md-12">
+                <!-- <ul class="links-collection">
                     <li class="wrap-links-2"><a href="#">Populær</a></li>
                     <li class="wrap-links-2 links-2"><a href="#">Mest solgte</a></li>
                     <li class="wrap-links-2 links-2-last"><a href="#">Tilbud</a></li>
+                </ul> -->
+                <ul id="home-page-tabs" class="nav nav-tabs" role="tablist">
+                  <li role="presentation" class="active">
+                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Populær</a>
+                  </li>
+                  <li role="presentation">
+                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mest solgte</a>
+                  </li>
+                  <li role="presentation">
+                    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Tilbud</a>
+                  </li>
                 </ul>
             </div>
 
@@ -42,9 +53,9 @@
                             @if($tire->price && $tire->special_price)
                                 <span class="text-danger"><strike>KR {{ $tire->price }}</strike></span>
                                 <span class="text-primary"> KR {{$tire->special_price}} </span>
-                            @elseif($tire->price) 
+                            @elseif($tire->price)
                                 <span class="text-primary">KR {{ $tire->price }}</span>
-                                <span class="text-danger">Special price:-</span>   
+                                <span class="text-danger">Nedsat pris:-</span>
                             @endif
                         </div>
                         <p class="thumbnail-category"><storng>Brand: </storng><a href="{{route('tire_brands.show',['id' =>$tire->brand->id])}}">{{ $tire->brand->name }}</a></p>
@@ -66,50 +77,6 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="information information-img">
-                            </div>
-                            <div class="information">
-                                <h3 class="content-header-3">Levering</h3>
-                                <p class="information-p">Vi leverer i egen varevogn</p>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="information information-img">
-                            </div>
-                            <div class="information">
-                                <h3 class="content-header-3">Kundeservice</h3>
-                                <p class="information-p">
-                                    Vores kundeservice sidder klar til at svar på <br> spørgsmål og hjælpe dig med din ordre
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="information information-img">
-                            </div>
-                            <div class="information">
-                                <h3 class="content-header-3">Kreditkort</h3>
-                                <p class="information-p">Vi tager imod alle kreditkort</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h3 class="content-header-3">Fire Dæk</h3>
-                <p class="bold">Billige dæk til folket</p>
-                <p class="light-grey-color">
-                    Fire Dæk er skabt med den simple idé, at du kan få leveret <br> fire billige dæk hjem til døren. Vi er specialister <br> i Lassa mærket, som skaber dæk af høj kvalitet <br> til en konkurrencedygtig pris. Gennem vores <br> gode kontakter kan vi skaffe Lassa dæk <br> billigere end nogen andre på det danske marked.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
             <div class="col-md-4">
                 <img src="{{ asset('index-page/1.jpg') }}">
             </div>
@@ -120,6 +87,56 @@
                 <img src="{{ asset('index-page/3.jpg') }}">
             </div>
         </div>
+    </div>
+
+    <div class="information-block container">
+        <div class="row">
+          <div class="col-md-4 information-fc">
+            <div class="information">
+              <h3 class="information__header">Følg os på Facebook</h3>
+            </div>
+          </div>
+          <div class="col-md-4 information-border-left">
+            <div class="information">
+              <div class="information__img">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+              </div>
+              <div class="information__body">
+                <h3 class="information__header">Levering</h3>
+                <p class="information__text">Vi leverer i egen varevogn</p>
+              </div>
+            </div>
+            <div class="information">
+              <div class="information__img">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+              </div>
+                <div class="information__body">
+                  <h3 class="information__header">Kundeservice</h3>
+                  <p class="information__text">
+                      Vores kundeservice sidder klar til at svar på <br> spørgsmål og hjælpe dig med din ordre
+                  </p>
+                </div>
+            </div>
+            <div class="information">
+              <div class="information__img">
+                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+              </div>
+              <div class="information__body">
+                  <h3 class="information__header">Kreditkort</h3>
+                  <p class="information__text">Vi tager imod alle kreditkort</p>
+              </div>
+            </div>
+          </div>
+            <div class="col-md-4 information-border-left">
+              <div class="information">
+                <h3 class="information__header">Fire Dæk</h3>
+                <p class="information__text information__text--bold">Billige dæk til folket</p>
+                <p class="information__text">
+                    Fire Dæk er skabt med den simple idé, at du kan få leveret <br> fire billige dæk hjem til døren. Vi er specialister <br> i Lassa mærket, som skaber dæk af høj kvalitet <br> til en konkurrencedygtig pris. Gennem vores <br> gode kontakter kan vi skaffe Lassa dæk <br> billigere end nogen andre på det danske marked.
+                </p>
+              </div>
+            </div>
+    </div>
     </div>
 
     <div class="container">
@@ -149,7 +166,7 @@
             <div class="col-md-8">
                 <h2 class="content-header">Vinterdæk</h2>
                 <p class="content-p">
-                    Det er ikke lovpligtigt at have vinterdæk på i Danmark, men det er stærkt anbefalet af blandt andet FDM. Vinterdæk har en gummiblanding designet til at kunne fungere ved lave temperaturer og et dækmønster bestående af mange dele, der bevæger sig i forhold til hinanden, så det er selvrensende. Alt dette give bedre vejgreb og kortere bremselængder i sne og isglat føre. Dermed har man øget sin egen, sine passagerer og medtrafikanters sikkerhed. Man kan være fristet til at springe vinterdækkene over, men sne og is kan komme pludseligt i Danmark. Når vinteren først for alvor er sat ind, så er der rigtigt mange, der skal have skiftet dæk. Så det er en meget god idé at få skiftet i god tid. Vinterdæk er mærket med “M+S” og et bjerg- og snesymbol. Det er et lovkrav, at alle fire dæk er vinterdæk, så man skal skifte alle på samme tid, og kan ikke nøjes med et eller to. Hvis man skal udenfor landets grænser i vinteren, så er det nødvendigt at undersøge landenes regler for vinterdæk. F.eks. skal man i mange lande have vinterdæk på afhængigt en bestemt periode af året eller under nogle vejrforhold. Der kan også gælde andre forhold omkring pigdæk, som i Danmark er tilladt mellem den 1. November og 15. April. 
+                    Det er ikke lovpligtigt at have vinterdæk på i Danmark, men det er stærkt anbefalet af blandt andet FDM. Vinterdæk har en gummiblanding designet til at kunne fungere ved lave temperaturer og et dækmønster bestående af mange dele, der bevæger sig i forhold til hinanden, så det er selvrensende. Alt dette give bedre vejgreb og kortere bremselængder i sne og isglat føre. Dermed har man øget sin egen, sine passagerer og medtrafikanters sikkerhed. Man kan være fristet til at springe vinterdækkene over, men sne og is kan komme pludseligt i Danmark. Når vinteren først for alvor er sat ind, så er der rigtigt mange, der skal have skiftet dæk. Så det er en meget god idé at få skiftet i god tid. Vinterdæk er mærket med “M+S” og et bjerg- og snesymbol. Det er et lovkrav, at alle fire dæk er vinterdæk, så man skal skifte alle på samme tid, og kan ikke nøjes med et eller to. Hvis man skal udenfor landets grænser i vinteren, så er det nødvendigt at undersøge landenes regler for vinterdæk. F.eks. skal man i mange lande have vinterdæk på afhængigt en bestemt periode af året eller under nogle vejrforhold. Der kan også gælde andre forhold omkring pigdæk, som i Danmark er tilladt mellem den 1. November og 15. April.
                 </p>
             </div>
             <div class="col-sm-4 cover-2">

@@ -5,21 +5,19 @@
     @include('partials.head')
 </head>
 
-<body>
+<body class="b-page">
 
 @include('partials.slider')
+@include('partials.top-header')
+@include('partials.search')
+@include('partials.links_collection_1')
 
 <div id="wrapper">
-
-    <div class="container-fluid index-wrap">
-    		@include('partials.wrap_under_slider')
-    		@include('partials.search')
-    		@include('partials.links_collection_1')
-            @yield('content')
-            @include('partials.footer')
-    </div>
-
+    @yield('content')
 </div>
+
+@include('partials.footer')
+
 <!-- /#wrapper -->
 @include('partials.front_js')
 </body>
