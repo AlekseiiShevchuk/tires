@@ -28,6 +28,10 @@ class UsersOrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
+        if (is_null(Auth::user()->address) && is_null(Auth::user()->phone)) {
+            return redirect()->route('account-address.store');
+        }
+
         $order = new Order();
         $order->user_id = Auth::user()->id;
         $order->count = $request->count;

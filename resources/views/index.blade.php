@@ -10,6 +10,20 @@
                     <li class="wrap-links-2 links-2-last"><a href="#">Tilbud</a></li>
                 </ul>
             </div>
+
+            <div class="col-md-4">
+                    {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
+                    
+                    <input type="hidden" name="count" value="2" />
+                    <input type="hidden" name="price" value="25" />
+                    <input type="hidden" name="tires[]" value="1" />
+                    <input type="hidden" name="tires[]" value="2" />
+                    <input type="hidden" name="tires[]" value="3" />
+                    <input type="hidden" name="tires[]" value="4" />
+
+                    {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+            </div>
         </div>
     </div>
 

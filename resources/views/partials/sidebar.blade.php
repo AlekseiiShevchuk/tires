@@ -140,6 +140,15 @@
                 </a>
             </li>
             @endcan
+
+            @can('order_list')
+            <li class="{{ $request->segment(1) == 'messages' ? 'active' : '' }}">
+                <a href="{{ route('orders.index') }}">
+                    <i class="fa fa-dot-circle-o"></i>
+                    <span class="title">@lang('quickadmin.orders.title')</span>
+                </a>
+            </li>
+            @endcan
             
 
     
