@@ -159,6 +159,14 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
+        //Auth gates for Order
+        Gate::define('order_list', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('order_show', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
         // Auth gates for: Tire brands
         Gate::define('tire_brand_access', function ($user) {
             return in_array($user->role_id, [1, 2]);
