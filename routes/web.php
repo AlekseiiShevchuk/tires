@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('account', 'AccountController');
     Route::resource('account-settings', 'AccountSettingsController');
     Route::resource('account-address', 'AccountAddressController');
+    Route::resource('order', 'UsersOrderController');
     Route::post('roles_mass_destroy', ['uses' => 'RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'UsersController');
     Route::post('users_mass_destroy', ['uses' => 'UsersController@massDestroy', 'as' => 'users.mass_destroy']);
