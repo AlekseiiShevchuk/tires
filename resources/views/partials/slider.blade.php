@@ -18,6 +18,10 @@
             <div data-u="prototype" style="width:16px;height:16px;"></div>
         </div>
         <!-- Arrow Navigator -->
-        <span data-u="arrowleft" class="jssora22l" style="top:0px;left:8px;width:40px;height:58px;" data-autocenter="2"></span>
-        <span data-u="arrowright" class="jssora22r" style="top:0px;right:8px;width:40px;height:58px;" data-autocenter="2"></span>
+        <span data-u="arrowleft" class="tparrows tparrows--left" data-autocenter="2">
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </span>
+        <span data-u="arrowright" class="tparrows tparrows--right" data-autocenter="2">
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+        </span>
     </div>
