@@ -403,6 +403,7 @@ body {
 	padding-top: 50px;
 }
 .shopping-cart__main {
+	font-family: 'Open Sans', sans-serif;
 	height: 45px;
 	line-height: 45px;
 	padding: 0 16px;

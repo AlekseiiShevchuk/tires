@@ -11,7 +11,7 @@
       content="text/html; charset=utf-8">
 <link href="{{ asset('sbadmin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 <link rel="stylesheet"
-      href="{{ url('quickadmin/css') }}/select2.min.css"/>     
+      href="{{ url('quickadmin/css') }}/select2.min.css"/>
 <link rel="stylesheet" href="{{ url('quickadmin/css') }}/index.css"/>
 <link href="{{ asset('sbadmin/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
 <link href="{{ asset('sbadmin/dist/css/sb-admin-2.css') }}" rel="stylesheet">
@@ -28,6 +28,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.min.css"/>
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.standalone.min.css"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
       @yield('head')
 <style>
         /* jssor slider bullet navigator skin 05 css */
