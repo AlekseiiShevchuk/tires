@@ -5,9 +5,12 @@
     @include('partials.head')
 </head>
 
-<body>
+<body class="b-page">
 
-@include('partials.slider')
+  @include('partials.slider')
+  @include('partials.top-header')
+  @include('partials.search')
+  @include('partials.links_collection_1')
 
 <div id="wrapper">
 

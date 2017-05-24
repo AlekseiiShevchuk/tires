@@ -29,6 +29,8 @@
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.standalone.min.css"/>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link rel="stylesheet"
+  href="{{ url('quickadmin/css') }}/slick.css"/> 
       @yield('head')
 <style>
         /* jssor slider bullet navigator skin 05 css */
