@@ -10,4 +10,9 @@ class Order extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function tires()
+    {
+        return $this->belongsToMany('App\TireProduct', 'orders_tires', 'order_id', 'tire_id');
+    }
 }
