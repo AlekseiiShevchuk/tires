@@ -17,6 +17,16 @@
                     <p>{{ $order->count }}</p>
                     <label>Price:</label>
                     <p>{{ $order->price }}</p>
+                    <label>Status</label>
+                    <p id="order-label-status">{{$status_labels[$order->status]}}</p>
+                    <label>Change status</label>
+                    <p>
+                        <select data-version="2" data-order="{{$order->id}}" class="form-control change-order-status">
+                            @foreach($status_labels as $key => $label)
+                                <option value="{{ $key }}" {{($key == $order->status) ? 'selected' : ''}}>{{ $label }}</option>
+                            @endforeach
+                        </select>
+                    </p>
                 </div>
                 <div class="col-md-6">
                     <label>User:</label>
@@ -77,4 +87,7 @@
             <a href="{{ route('orders.index') }}" class="btn btn-default">@lang('quickadmin.qa_back_to_list')</a>
         </div>
     </div>
+@stop
+@section('js_scripts')
+<script src="{{ url('quickadmin/js') }}/ajax.js"></script>
 @stop

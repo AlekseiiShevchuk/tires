@@ -21,7 +21,10 @@ class OrderController extends Controller
 
         $orders = Order::all();
 
-        return view('orders.index', compact('orders'));
+        return view('orders.index')
+            ->with('orders', $orders)
+            ->with('status_labels', Order::STATUS_LABELS)
+        ;
     }
 
     /**
@@ -38,6 +41,9 @@ class OrderController extends Controller
 
         $order = Order::findOrFail($id);
 
-        return view('orders.show', compact('order'));
+        return view('orders.show')
+            ->with('order', $order)
+            ->with('status_labels', Order::STATUS_LABELS)
+        ;
     }
 }
