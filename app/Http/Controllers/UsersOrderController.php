@@ -34,7 +34,8 @@ class UsersOrderController extends Controller
 
         $order = new Order();
         $order->user_id = Auth::user()->id;
-        $order->count = $request->count;
+        $order->status = Order::NOT_PAID;
+        $order->count = count($request->tires);
         $order->price = $request->price;
         $order->identifier = Auth::user()->id . time();
         $order->save();

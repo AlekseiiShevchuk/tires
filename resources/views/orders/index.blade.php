@@ -15,6 +15,7 @@
                         <th>@lang('quickadmin.orders.fields.identifier')</th>
                         <th>@lang('quickadmin.orders.fields.count')</th>
                         <th>@lang('quickadmin.orders.fields.price')</th>
+                        <th>@lang('quickadmin.orders.fields.status')</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -27,6 +28,15 @@
                                 <td>{{ $order->identifier }}</td>
                                 <td>{{ $order->count }}</td>
                                 <td>{{ $order->price }}</td>
+                                <td>
+                                    <span class="get-select-option" style="cursor: pointer;" data-order="{{$order->id}}">{{ $status_labels[$order->status] }}</span>
+                                    <select style="display: none;" class="form-control change-order-status" data-version="1" data-order="{{$order->id}}">
+                                        @foreach($status_labels as $key => $label)
+                                            <option value="{{ $key }}" {{($key == $order->status) ? 'selected' : ''}}>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    <a data-order="{{$order->id}}" style="display: none;" class="btn btn-danger btn-xs hide-select-option">Hide</a>
+                                </td>
                                 <td>
                                     @can('order_show')
                                     <a href="{{ route('orders.show',[$order->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
@@ -47,3 +57,7 @@
 
 @section('javascript') 
 @endsection
+
+@section('js_scripts')
+<script src="{{ url('quickadmin/js') }}/ajax.js"></script>
+@stop

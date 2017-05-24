@@ -34,5 +34,6 @@
 </div>
 <!-- /#wrapper -->
 @include('partials.javascripts')
+@yield('js_scripts')
 </body>
 </html>

@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-4">
-          <img src="{{ asset('index-page/fire-daek-logo-1490775043.jpg') }}" class="header__logo">
+          <a href="{{ action('IndexController@index') }}"><img src="{{ asset('index-page/fire-daek-logo-1490775043.jpg') }}" class="header__logo"></a>
       </div>
       <div class="col-md-4">
         <div class="search-content">
