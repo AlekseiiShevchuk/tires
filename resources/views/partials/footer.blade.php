@@ -1,8 +1,9 @@
   <div class="small-footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="pull-left">
+          <!-- <div class="col-md-12"> -->
+            <!-- <div class="pull-left"> -->
+              <div class="col-m-6 col-md-6 small-footer__left">
                 <span class="content-footer-span">Nyhedsbrev</span>
                 <form class="small-footer-wrap-input">
                     <input class="input-footer" type="text" placeholder="Din e-mail">
@@ -10,8 +11,10 @@
                       <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </button>
                 </form>
-            </div>
-            <div class="pull-right">
+              </div>
+            <!-- </div> -->
+            <!-- <div class="pull-right"> -->
+              <div class="col-md-6 small-footer__right">
                 <span class="content-footer-span">Følg os</span>
                 <div class="small-footer__social">
                   <a href="#">
@@ -27,7 +30,7 @@
                     <i class="fa fa-google-plus" aria-hidden="true"></i>
                   </a>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
     </div>
@@ -36,7 +39,7 @@
     <footer class="footer">
       <div class="container">
         <div class="row">
-            <div class="col-md-2 footer-wrap">
+            <div class="col-sm-2 col-md-2 footer-wrap">
                 <ul class="footer-list">
                     <li class="footer-list__caption">Kategorier</li>
                     <li class="footer-list__item"><a href="#">Sommerdæk</a></li>
@@ -44,7 +47,7 @@
                     <li class="footer-list__item"><a href="#">Helårsdæk</a></li>
                 </ul>
             </div>
-            <div class="col-md-2 footer-wrap">
+            <div class="col-sm-2 col-md-2 footer-wrap">
                 <ul class="footer-list">
                     <li class="footer-list__caption">Information</li>
                     <li class="footer-list__item"><a href="#">Nyheder</a></li>
@@ -53,7 +56,7 @@
                     <li class="footer-list__item"><a href="#">Om Os</a></li>
                 </ul>
             </div>
-            <div class="col-md-4 footer-wrap">
+            <div class="col-sm-4 col-md-4 footer-wrap">
                 <ul class="footer-list">
                     <li class="footer-list__caption">Min konto</li>
                     <li class="footer-list__item"><a href="#">Mine ordrer</a></li>
@@ -62,7 +65,7 @@
                     <li class="footer-list__item"><a href="#">Mine oplysninger</a></li>
                 </ul>
             </div>
-            <div class="col-md-4 footer-border-left footer-wrap">
+            <div class="col-sm-4 col-md-4 footer-border-left footer-wrap">
                 <ul class="footer-list">
                     <li class="footer-list__caption">Butiksinformation</li>
                     <li class="footer-list__item">

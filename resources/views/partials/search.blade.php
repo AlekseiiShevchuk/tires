@@ -12,7 +12,11 @@
       </div>
       <div class="col-md-3 col-md-offset-1">
           <div class="shopping-cart">
-            <a class="shopping-cart__main" href="#">Kurv</a>
+            <a class="shopping-cart__main" href="#">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <strong>Kurv</strong>
+              <i class="fa fa-caret-down" aria-hidden="true" style="float: right;line-height: 45px;"></i>
+            </a>
           </div>
       </div>
     </div>

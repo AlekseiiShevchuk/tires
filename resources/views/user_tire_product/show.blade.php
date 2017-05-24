@@ -1,9 +1,9 @@
 @extends('layouts.product')
 
-@section('head')
+<!-- @section('head')
     <link rel="stylesheet"
-      href="{{ url('quickadmin/css') }}/slick.css"/> 
-@endsection
+      href="{{ url('quickadmin/css') }}/slick.css"/>
+@endsection -->
 
 @section('content')
 	<main class="product-full">
@@ -61,7 +61,7 @@
                     @foreach($related_tire_products as $product)
                         <div class="col-sm-6 col-md-3">
                             <div class="thumbnail">
-                                <a href="{{ action('UsersTireProductController@show', $product->id) }}"><img class="related-images" 
+                                <a href="{{ action('UsersTireProductController@show', $product->id) }}"><img class="related-images"
                                             src="{{asset('uploads/' . $product->image_1)}}"></a>
                                 <div class="caption">
                                     <h4 style="height: 38px;overflow: hidden;"><strong>{{ $product->name }}</strong>
