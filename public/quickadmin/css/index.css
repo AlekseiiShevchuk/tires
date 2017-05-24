@@ -4,8 +4,14 @@ body {
 .b-page {
 	background: #fff;
 }
+.img-response {
+	width: 100%;
+	height: auto;
+}
+
 #wrapper {
 	background-color: #fff;
+	padding-bottom: 50px;
 }
 .index-wrap {
 	padding-right: 0;
@@ -163,11 +169,11 @@ body {
 }
 
 .cover {
-	margin-top: 55px;
+	margin-top: 25px;
 }
 
 .cover-2 {
-	margin-top: 65px;
+	margin-top: 30px;
 }
 
 .content-footer-span {
@@ -179,8 +185,22 @@ body {
 
 .small-footer {
 	background-color: #3f3f3f;
-	height: 70px;
-	line-height: 70px;
+	/*height: 70px;
+	line-height: 70px;*/
+}
+.small-footer__left,
+.small-footer__right {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.small-footer__right {
+	text-align: right;
+}
+@media (max-width: 992px) {
+	.small-footer__left,
+	.small-footer__right {
+		text-align: center;
+	}
 }
 .small-footer__social {
 	display: inline-block;
@@ -307,6 +327,9 @@ body {
 	font-family: "Open Sans",sans-serif;
 	margin-bottom: 25px;
 	padding: 0 10px;
+}
+.information__fc {
+	margin-top: 10px;
 }
 .information__img {
 	width: 60px;
@@ -493,6 +516,13 @@ body {
 	color: #fff;
 	font-size: 18px;
 }
+.shopping-cart__main:hover {
+	color: #fff;
+	text-decoration: none;
+}
+.shopping-cart__main .fa + strong {
+	margin-left: 20px;
+}
 
 .header__logo {
 	padding-top: 15px;
@@ -500,6 +530,25 @@ body {
 
 .block-top-menu {
 	padding: 25px 15px 0;
+}
+.block-top-menu-title {
+	font: 600 18px/22px "Open Sans",sans-serif;
+  text-transform: uppercase;
+  color: #484848;
+  display: block;
+  padding: 17px 20px;
+  border-bottom: 3px solid #e9e9e9;
+  background: #f6f6f6;
+  position: relative;
+	margin: 25px 15px 0;
+	display: none;
+  align-items: center;
+  justify-content: space-between;
+}
+.block-top-menu-title:hover {
+	background: #333;
+	border-bottom-color: #666666;
+	color: #fff;
 }
 .block-top-menu__item {
 	float: left;
@@ -519,6 +568,19 @@ body {
 	border-bottom-color: #666666;
 	color: #fff;
 	text-decoration: none;
+}
+
+@media (max-width: 760px) {
+	.block-top-menu-title {
+		display: flex;
+	}
+	.block-top-menu__item {
+		float: none;
+		border: none;
+	}
+	.block-top-menu {
+		display: none;
+	}
 }
 
 /* home-page-tabs */
@@ -558,4 +620,105 @@ body {
 #home-page-tabs > li a:hover {
 	background: #333;
 	color: #fff;
+}
+
+@media (max-width: 480px) {
+	#home-page-tabs > li {
+		float: none;
+		margin-left: 0;
+		padding-left: 0;
+	}
+	#home-page-tabs > li:before {
+		display: none;
+	}
+}
+
+/* main slider*/
+.slick-dotted.slick-slider {
+	margin-bottom: 0 !important;
+}
+.main-slider__slide {
+	position: relative;
+}
+.main-slider__wrap {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.main-slider__wrap > h2 {
+	z-index: 5;
+    cursor: pointer;
+    border-radius: 3px;
+    font-style: normal;
+    color: rgb(255, 255, 255);
+    border: 2px solid rgba(255, 255, 255, 0);
+		background-color: rgb(0, 0, 0);
+    line-height: 20px;
+    margin: 0px;
+    padding: 3px 5px 3px 8px;
+    letter-spacing: 2px;
+    font-weight: 300;
+    font-size: 20px;
+		font-family: "Open Sans",sans-serif;
+}
+.main-slider-dots {
+	position: absolute;
+  bottom: 20px;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  z-index: 1111111111;
+}
+.main-slider-dots li {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+	border: 4px solid #fff;
+	vertical-align: middle;
+}
+.main-slider-dots li.slick-active {
+  background: grey;
+	width: 20px;
+	height: 20px;
+}
+.main-slider-dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  cursor: pointer;
+  color: transparent;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+.prices {
+	font-family: "Open Sans",sans-serif;
+}
+.prices__price > span {
+	display: block;
+}
+.prices__price-primary {
+	font-size: 26px;
+	font-weight: 700;
+	color: #337ab7;
+}
+.prices__help {
+	color: grey;
+}
+.prices__price-danger {
+	font-size: 24px;
+	font-weight: 700;
 }

@@ -11,20 +11,20 @@
                 </ul> -->
                 <ul id="home-page-tabs" class="nav nav-tabs" role="tablist">
                   <li role="presentation" class="active">
-                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Populær</a>
+                    <a href="#popular" aria-controls="popular" role="tab" data-toggle="tab">Populær</a>
                   </li>
                   <li role="presentation">
-                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mest solgte</a>
+                    <a href="#solgte" aria-controls="solgte" role="tab" data-toggle="tab">Mest solgte</a>
                   </li>
                   <li role="presentation">
-                    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Tilbud</a>
+                    <a href="#tilbud" aria-controls="tilbud" role="tab" data-toggle="tab">Tilbud</a>
                   </li>
                 </ul>
             </div>
 
             <!-- <div class="col-md-4">
                     {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
-                    
+
                     <input type="hidden" name="count" value="2" />
                     <input type="hidden" name="price" value="25" />
                     <input type="hidden" name="tires[]" value="1" />
@@ -40,6 +40,48 @@
 
     <section class="section container wrap-tires">
         <div class="row text-center">
+          <div class="tab-content">
+             <div role="tabpanel" class="tab-pane active" id="popular">
+                @foreach($tires as $tire)
+                    <div class="col-sm-6 col-md-3">
+                        <div class="thumbnail">
+                            <a href="{{ action('UsersTireProductController@show', $tire->id) }}">
+                                <img class="thumbnail-img" src="{{asset('uploads/' . $tire->image_1)}}">
+                            </a>
+                            <div class="caption">
+                            <h4 style="height: 20px;overflow: hidden;"><strong>{{ $tire->name }}</strong></h4>
+                            <p class="thumbnail-category"><storng>Brand: </storng><a href="{{route('tire_brands.show',['id' =>$tire->brand->id])}}">{{ $tire->brand->name }}</a></p>
+                            <!-- <p class="caption-description">{!! mb_substr($tire->description, 0, 50) !!} ... </p> -->
+                            <div class="prices">
+                                @if($tire->price && $tire->special_price)
+                                  <div class="prices__price">
+                                    <span class="prices__price-primary">{{ $tire->price }},-</span>
+                                    <span class="prices__help">pr. stk. ex. moms</span>
+                                  </div>
+                                  <div class="prices__special-price">
+                                    <span class="prices__price-danger text-danger">{{$tire->special_price}}</span>
+                                  </div>
+                                @elseif($tire->price)
+                                    <div class="prices__price">
+                                      <span class="prices__price-primary">{{ $tire->price }},-</span>
+                                      <span class="prices__help">pr. stk. ex. moms</span>
+                                    </div>
+                                    <div class="prices__special-price">
+                                      <span class="prices__price-danger text-danger">Nedsat pris!</span>
+                                    </div>
+                                @endif
+                            </div>
+                            <hr>
+                            <p>
+                                <a href="{{ action('UsersTireProductController@show', $tire->id) }}" class="btn btn-default">Mere Info</a>
+                                <a href="#" class="btn btn-primary" style="padding-left:30px;padding-right:30px;">Bestil nu!</a>
+                            </p>
+                        </div>
+                    </div>
+                    </div>
+                @endforeach
+          </div>
+          <div role="tabpanel" class="tab-pane" id="solgte">
             @foreach($tires as $tire)
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
@@ -47,18 +89,28 @@
                             <img class="thumbnail-img" src="{{asset('uploads/' . $tire->image_1)}}">
                         </a>
                         <div class="caption">
-                        <h4 style="height: 38px;overflow: hidden;"><strong>{{ $tire->name }}</strong></h4>
-                        <p class="caption-description">{!! mb_substr($tire->description, 0, 50) !!} ... </p>
-                        <div class="price">
+                        <h4 style="height: 20px;overflow: hidden;"><strong>{{ $tire->name }}</strong></h4>
+                        <p class="thumbnail-category"><storng>Brand: </storng><a href="{{route('tire_brands.show',['id' =>$tire->brand->id])}}">{{ $tire->brand->name }}</a></p>
+                        <!-- <p class="caption-description">{!! mb_substr($tire->description, 0, 50) !!} ... </p> -->
+                        <div class="prices">
                             @if($tire->price && $tire->special_price)
-                                <span class="text-danger"><strike>KR {{ $tire->price }}</strike></span>
-                                <span class="text-primary"> KR {{$tire->special_price}} </span>
+                              <div class="prices__price">
+                                <span class="prices__price-primary">{{ $tire->price }},-</span>
+                                <span class="prices__help">pr. stk. ex. moms</span>
+                              </div>
+                              <div class="prices__special-price">
+                                <span class="prices__price-danger text-danger">{{$tire->special_price}}</span>
+                              </div>
                             @elseif($tire->price)
-                                <span class="text-primary">KR {{ $tire->price }}</span>
-                                <span class="text-danger">Nedsat pris:-</span>
+                                <div class="prices__price">
+                                  <span class="prices__price-primary">{{ $tire->price }},-</span>
+                                  <span class="prices__help">pr. stk. ex. moms</span>
+                                </div>
+                                <div class="prices__special-price">
+                                  <span class="prices__price-danger text-danger">Nedsat pris!</span>
+                                </div>
                             @endif
                         </div>
-                        <p class="thumbnail-category"><storng>Brand: </storng><a href="{{route('tire_brands.show',['id' =>$tire->brand->id])}}">{{ $tire->brand->name }}</a></p>
                         <hr>
                         <p>
                             <a href="{{ action('UsersTireProductController@show', $tire->id) }}" class="btn btn-default">Mere Info</a>
@@ -68,6 +120,11 @@
                 </div>
                 </div>
             @endforeach
+          </div>
+          <div role="tabpanel" class="tab-pane" id="tilbud">
+            <h2>Tilbud</h2>
+          </div>
+          </div>
         <div class="clearfix"></div>
         <div class="row text-center">
                 <div class="container"> {{ $tires->links() }}</div>
@@ -77,26 +134,29 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <img src="{{ asset('index-page/1.jpg') }}">
+            <div class="col-xs-4">
+                <img src="{{ asset('index-page/1.jpg') }}" class="img-response">
             </div>
-            <div class="col-md-4">
-                <img src="{{ asset('index-page/2.jpg') }}">
+            <div class="col-xs-4">
+                <img src="{{ asset('index-page/2.jpg') }}" class="img-response">
             </div>
-            <div class="col-md-4">
-                <img src="{{ asset('index-page/3.jpg') }}">
+            <div class="col-xs-4">
+                <img src="{{ asset('index-page/3.jpg') }}" class="img-response">
             </div>
         </div>
     </div>
 
     <div class="information-block container">
         <div class="row">
-          <div class="col-md-4 information-fc">
+          <div class="col-xs-12 col-sm-12 col-md-4">
             <div class="information">
               <h3 class="information__header">Følg os på Facebook</h3>
+              <div class="information__fc">
+                  <iframe name="f312ee4e65ab8f" width="300px" height="214px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like_box Facebook Social Plugin" src="https://www.facebook.com/plugins/like_box.php?app_id=334341610034299&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2F0F7S7QWJ0Ac.js%3Fversion%3D42%23cb%3Df13538c47ad2984%26domain%3Dfire-daek.dk%26origin%3Dhttp%253A%252F%252Ffire-daek.dk%252Ffa8fc65277f7bc%26relation%3Dparent.parent&amp;color_scheme=light&amp;container_width=463&amp;header=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fprestashop&amp;locale=en_US&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false" style="border: none; visibility: visible; width: 300px; height: 214px;"></iframe>
+              </div>
             </div>
           </div>
-          <div class="col-md-4 information-border-left">
+          <div class="col-xs-12 col-sm-6 col-md-4 information-border-left">
             <div class="information">
               <div class="information__img">
                 <i class="fa fa-truck" aria-hidden="true"></i>
@@ -127,7 +187,7 @@
               </div>
             </div>
           </div>
-            <div class="col-md-4 information-border-left">
+            <div class="col-xs-12 col-sm-6 col-md-4 information-border-left">
               <div class="information">
                 <h3 class="information__header">Fire Dæk</h3>
                 <p class="information__text information__text--bold">Billige dæk til folket</p>
@@ -148,12 +208,12 @@
                 </p>
             </div>
             <div class="col-md-3">
-                <img src="{{ asset('index-page/cover1.jpg') }}">
+                <img src="{{ asset('index-page/cover1.jpg') }}" class="img-response">
             </div>
         </div>
         <div class="row">
             <div class="col-md-4 cover">
-                <img src="{{ asset('index-page/cover2.jpg') }}">
+                <img src="{{ asset('index-page/cover2.jpg') }}" class="img-response">
             </div>
             <div class="col-md-8">
                 <h2 class="content-header">Sommerdæk</h2>
@@ -170,7 +230,7 @@
                 </p>
             </div>
             <div class="col-sm-4 cover-2">
-                <img src="{{ asset('index-page/cover3.jpg') }}">
+                <img src="{{ asset('index-page/cover3.jpg') }}" class="img-response">
             </div>
         </div>
         <div class="row">
