@@ -22,7 +22,7 @@
                 </ul>
             </div>
 
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                     {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
                     
                     <input type="hidden" name="count" value="2" />
@@ -34,7 +34,7 @@
 
                     {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
                     {!! Form::close() !!}
-            </div>
+            </div> -->
         </div>
     </div>
 

@@ -34,21 +34,37 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>Image</th>
                                 <th>Name</th>
                                 <th>Brand</th>
                                 <th>Size</th>
                                 <th>Price</th>
                                 <th>Special Price</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($order->tires as $tire)
                                 <tr>
-                                    <td>{{$tire->name}}</td>
+                                    @if(!is_null($tire->image_1))
+                                        <td>
+                                            <a href="{{ asset('uploads/' . $tire->image_1) }}" target="_blank"><img src="{{ asset('uploads/thumb/' . $tire->image_1) }}"/></a>
+                                        </td>
+                                    @else
+                                        <td></td>
+                                    @endif
+                                    <td><a href="{{ route('tire_products.show',[$tire->id]) }}" target="_blank">
+                                        {{$tire->name}}
+                                    </a></td>
                                     <td>{{$tire->brand->name}}</td>
                                     <td>{{$tire->size->size}}</td>
                                     <td>{{$tire->price}}</td>
                                     <td>{{!is_null($tire->special_price) ? $tire->special_price : '-'}}</td>
+                                    <td>
+                                        @can('tire_product_edit')
+                                        <a href="{{ route('tire_products.edit',[$tire->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
+                                        @endcan
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
