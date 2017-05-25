@@ -50,16 +50,15 @@
             <div class="col-sm-2 col-md-2 footer-wrap">
                 <ul class="footer-list">
                     <li class="footer-list__caption">Information</li>
-                    <li class="footer-list__item"><a href="#">Nyheder</a></li>
-                    <li class="footer-list__item"><a href="#">Kontakt os</a></li>
-                    <li class="footer-list__item"><a href="#">Handelsbetingelser</a></li>
-                    <li class="footer-list__item"><a href="#">Om Os</a></li>
+                    <li class="footer-list__item"><a href="{{ action('ContactController@index') }}">Kontakt os</a></li>
+                    <li class="footer-list__item"><a href="{{ action('StaticPagesController@handels') }}">Handelsbetingelser</a></li>
+                    <li class="footer-list__item"><a href="{{ action('StaticPagesController@about') }}">Om Os</a></li>
                 </ul>
             </div>
             <div class="col-sm-4 col-md-4 footer-wrap">
                 <ul class="footer-list">
                     <li class="footer-list__caption">Min konto</li>
-                    <li class="footer-list__item"><a href="#">Mine ordrer</a></li>
+                    <li class="footer-list__item"><a href="{{ action('UsersOrderController@index') }}">Mine ordrer</a></li>
                     <li class="footer-list__item"><a href="#">Mine kreditnotaer</a></li>
                     <li class="footer-list__item"><a href="#">Mine adresser</a></li>
                     <li class="footer-list__item"><a href="#">Mine oplysninger</a></li>

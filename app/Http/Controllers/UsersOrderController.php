@@ -21,6 +21,38 @@ class UsersOrderController extends Controller
     }
 
     /**
+     * Show list of user orders.
+     *
+     * @param  \App\Http\Requests\StoreOrderRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $orders = Order::orderBy('id', 'DESC')->where('user_id', Auth::user()->id)->get();
+
+        return view('users_orders.index')
+            ->with('orders', $orders)
+            ->with('status_labels', Order::STATUS_LABELS)
+        ;
+    }
+
+    /**
+     * Show list of user orders.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $order = Order::findOrFail($id);
+
+        return view('users_orders.show')
+            ->with('order', $order)
+            ->with('status_labels', Order::STATUS_LABELS)
+        ;
+    }
+
+    /**
      * Store a newly created Order and OrderTires for junction table.
      *
      * @param  \App\Http\Requests\StoreOrderRequest  $request
