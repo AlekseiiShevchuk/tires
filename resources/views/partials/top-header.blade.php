@@ -11,9 +11,12 @@
       <div class="top-header__nav">
         <a class="white-color-bold" href="{{ action('ContactController@index') }}">Kontakt os</a>
               @if(Auth::check())
-        <a href="#logout" class="white-color-bold" onclick="$('#logout').submit();">
+        <a href="#" class="white-color-bold" onclick="$('#logout').submit();">
           Log af
         </a>
+        {!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'logout']) !!}
+        <button type="submit">@lang('quickadmin.logout')</button>
+        {!! Form::close() !!}
         <a class="white-color-bold" href="{{ action('AccountController@index') }}">{{ Auth::user()->name }}</a>
               @else
         <a class="white-color-bold" href="{{ action('UserAuthController@index') }}">Log ind</a>
