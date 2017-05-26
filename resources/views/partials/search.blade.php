@@ -7,6 +7,20 @@ $pre_order = PreOrder::where([
 ])->first();
 
 $price = 0;
+
+$tires = [];
+
+if ($pre_order instanceof PreOrder) {
+  $tires = $pre_order->tires->toArray();
+
+  foreach ($tires as $tire) {
+    $price += $tire['special_price'] ? $tire['special_price'] : $tire['price'];
+  }
+
+  $tires = array_map("unserialize", array_unique(array_map("serialize", $tires)));
+}
+//echo "<pre>"; print_r($tires); die();
+
 ?>
 <header class="header">
 <div class="container">
@@ -28,12 +42,11 @@ $price = 0;
               <i class="fa fa-caret-down" aria-hidden="true" style="float: right;line-height: 45px;"></i>
             </a>
             <div class="shopping-cart-dropdown">
-              @if($pre_order && count($pre_order->tires) > 0)
-                @foreach($pre_order->tires as $tire)
+              @if($pre_order && count($tires) > 0)
+                @foreach($tires as $key => $tire)
                   <div class="cart-block">
-                    <img src="{{ asset('uploads/thumb/' . $tire->image_1) }}">
+                    <img src="{{ asset('uploads/thumb/' . $tire['image_1']) }}">
                   </div>
-                  <?php $price += $tire->special_price ? $tire->special_price : $tire->price; ?>
                 @endforeach
                 {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
 
