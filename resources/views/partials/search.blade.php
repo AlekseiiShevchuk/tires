@@ -1,11 +1,14 @@
 <?php
 use App\PreOrder;
 
-$pre_order = PreOrder::where([
-  'user_id' => Auth::user()->id,
-  'is_confirmed' => PreOrder::NOT_CONFIRMED
-])->first();
+$pre_order = null;
 
+if (Auth::check()) {
+  $pre_order = PreOrder::where([
+    'user_id' => Auth::user()->id,
+    'is_confirmed' => PreOrder::NOT_CONFIRMED
+  ])->first();
+}
 $price = 0;
 
 $tires = [];

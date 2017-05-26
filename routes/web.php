@@ -5,6 +5,8 @@
 
 Route::get('/', ['uses' => 'IndexController@index', 'as' => 'index_route']);
 
+Route::post('/find-tires', ['uses' => 'IndexController@find', 'as' => 'find_tires']);
+
 Route::get('/product/{id}', 'UsersTireProductController@show');
 
 Route::get('/auth', 'UserAuthController@index');

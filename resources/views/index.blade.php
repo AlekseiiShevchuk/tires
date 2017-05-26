@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <!-- <ul class="links-collection">
                     <li class="wrap-links-2"><a href="#">Populær</a></li>
                     <li class="wrap-links-2 links-2"><a href="#">Mest solgte</a></li>
@@ -20,6 +20,13 @@
                     <a href="#tilbud" aria-controls="tilbud" role="tab" data-toggle="tab">Tilbud</a>
                   </li>
                 </ul>
+            </div>
+            <div class="col-md-6 form-group">
+                {!! Form::open(['method' => 'POST', 'route' => ['find_tires']]) !!}
+                {!! Form::label('number', 'Find Tire By Car Number*', ['class' => 'control-label']) !!}
+                {!! Form::text('number', old('number'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                {!! Form::submit('Find tires', ['class' => 'btn btn-danger']) !!}
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
