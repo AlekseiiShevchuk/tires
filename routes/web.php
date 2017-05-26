@@ -9,6 +9,10 @@ Route::get('/product/{id}', 'UsersTireProductController@show');
 
 Route::get('/auth', 'UserAuthController@index');
 
+Route::get('/about', 'StaticPagesController@about');
+
+Route::get('/handels', 'StaticPagesController@handels');
+
 Route::post('/auth/save-email', 'UserAuthController@saveEmailToSession');
 
 Route::get('/auth/create', ['uses' => 'UserAuthController@create', 'as' => 'create_account']);
