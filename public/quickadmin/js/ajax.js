@@ -59,7 +59,30 @@ $(document)
             },
             success: function (data) {
             	if (data.response_status) {
-            		alert('add');
+            		if (data.isRepeated) {
+            			var counter = $(document)
+            				.find('span[data-tirecounter="' + data.tire + '"]')
+            				.html();
+
+            			counter = parseInt(counter);
+
+            			$(document)
+            				.find('span[data-tirecounter="' + data.tire + '"]')
+            				.html(++counter);		
+            		} else {
+            			var src = '/uploads/thumb/' + data.tire.image_1;
+            			$('.shopping-cart-dropdown').append(
+            				'<div class="cart-block">'
+            				+ '<img src="' + src +'">'
+            				+ '<span data>'
+            				+ '<span data-tirecounter="' + data.tire.id + '">'
+            				+ '1'
+            				+ '</span>'
+            				+ 'x'
+            				+ '</span>'
+            				+'</div>'
+            			);
+            		}
             	}
             }
 		});

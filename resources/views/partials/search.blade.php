@@ -57,7 +57,7 @@ if ($pre_order instanceof PreOrder) {
                 @foreach($tires as $key => $tire)
                   <div class="cart-block">
                     <img src="{{ asset('uploads/thumb/' . $tire['image_1']) }}">
-                    <span>{{ $tire['count'] }}x</span>
+                    <span><span data-tirecounter="{{$tire['id']}}">{{ $tire['count'] }}</span>x</span>
                   </div>
                 @endforeach
                 {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
