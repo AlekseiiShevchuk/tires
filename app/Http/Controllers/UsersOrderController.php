@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreOrderRequest;
 use App\Order;
+use App\PreOrder;
 use App\OrderTire;
 
 class UsersOrderController extends Controller
@@ -64,6 +65,10 @@ class UsersOrderController extends Controller
             return redirect()->route('account-address.store');
         }
 
+        $pre_order = PreOrder::findOrFail($request->pre_order);
+        $pre_order->is_confirmed = PreOrder::CONFIRMED;
+        $pre_order->save(); 
+
         $order = new Order();
         $order->user_id = Auth::user()->id;
         $order->status = Order::NOT_PAID;
@@ -79,7 +84,9 @@ class UsersOrderController extends Controller
         	$orderTire->save();
         }
 
-        return redirect()->route('index_route');
+        session(['order_identifier' => $order->identifier]);
+
+        return redirect()->route('order_confirmed');
     }
 }
 

@@ -44,4 +44,24 @@ $(document)
             }
 		});
 	})
+	.on('click', '.add-to-pre-order', function () {
+		var item = $(this);
+		var data = {
+			tire: item.attr('data-tire')
+		};
+		
+		$.ajax({
+			url: '/add-to-pre-order',
+			method: 'POST',
+			data: data,
+			headers: {
+                'X-CSRF-TOKEN': window._token
+            },
+            success: function (data) {
+            	if (data.response_status) {
+            		alert('add');
+            	}
+            }
+		});
+	})
 ;	

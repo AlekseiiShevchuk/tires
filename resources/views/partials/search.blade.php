@@ -1,3 +1,13 @@
+<?php
+use App\PreOrder;
+
+$pre_order = PreOrder::where([
+  'user_id' => Auth::user()->id,
+  'is_confirmed' => PreOrder::NOT_CONFIRMED
+])->first();
+
+$price = 0;
+?>
 <header class="header">
 <div class="container">
     <div class="row">
@@ -17,6 +27,28 @@
               <strong>Kurv</strong>
               <i class="fa fa-caret-down" aria-hidden="true" style="float: right;line-height: 45px;"></i>
             </a>
+            <div class="shopping-cart-dropdown">
+              @if($pre_order && count($pre_order->tires) > 0)
+                @foreach($pre_order->tires as $tire)
+                  <div class="cart-block">
+                    <img src="{{ asset('uploads/thumb/' . $tire->image_1) }}">
+                  </div>
+                  <?php $price += $tire->special_price ? $tire->special_price : $tire->price; ?>
+                @endforeach
+                {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
+
+                    <input type="hidden" name="price" value="{{$price}}" />
+                    <input type="hidden" name="pre_order" value="{{$pre_order->id}}" />
+                    <div id="cart-hidden-inputs">
+                      @foreach($pre_order->tires as $tire)
+                        <input type="hidden" name="tires[]" value="{{$tire->id}}" />
+                      @endforeach
+                    </div>
+
+                    {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+              @endif
+            </div>
           </div>
       </div>
     </div>
