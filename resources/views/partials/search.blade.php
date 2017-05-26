@@ -11,15 +11,23 @@ $price = 0;
 $tires = [];
 
 if ($pre_order instanceof PreOrder) {
-  $tires = $pre_order->tires->toArray();
+  $data = $pre_order->tires->toArray();
 
-  foreach ($tires as $tire) {
+  foreach ($data as $tire) {
     $price += $tire['special_price'] ? $tire['special_price'] : $tire['price'];
   }
 
-  $tires = array_map("unserialize", array_unique(array_map("serialize", $tires)));
+  $tires = array_map("unserialize", array_unique(array_map("serialize", $data)));
+
+  foreach ($tires as $key => $value) {
+    $tires[$key]['count'] = 0;
+    foreach ($data as $k => $row) {
+      if ($value == $row) {
+        ++$tires[$key]['count'];
+      }
+    }
+  }
 }
-//echo "<pre>"; print_r($tires); die();
 
 ?>
 <header class="header">
@@ -46,6 +54,7 @@ if ($pre_order instanceof PreOrder) {
                 @foreach($tires as $key => $tire)
                   <div class="cart-block">
                     <img src="{{ asset('uploads/thumb/' . $tire['image_1']) }}">
+                    <span>{{ $tire['count'] }}x</span>
                   </div>
                 @endforeach
                 {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
