@@ -25,4 +25,14 @@ class StaticPagesController extends Controller
     {
         return view('static_pages.handels');
     }
+
+    /**
+     * Show the confirmed order page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function confirmedOrder()
+    {
+        return view('static_pages.confirmed_order');
+    }
 }

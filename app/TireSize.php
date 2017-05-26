@@ -13,5 +13,4 @@ class TireSize extends Model
 {
     protected $fillable = ['size'];
     
-    
 }

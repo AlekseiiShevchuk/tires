@@ -1,3 +1,38 @@
+<?php
+use App\PreOrder;
+
+$pre_order = null;
+
+if (Auth::check()) {
+  $pre_order = PreOrder::where([
+    'user_id' => Auth::user()->id,
+    'is_confirmed' => PreOrder::NOT_CONFIRMED
+  ])->first();
+}
+$price = 0;
+
+$tires = [];
+
+if ($pre_order instanceof PreOrder) {
+  $data = $pre_order->tires->toArray();
+
+  foreach ($data as $tire) {
+    $price += $tire['special_price'] ? $tire['special_price'] : $tire['price'];
+  }
+
+  $tires = array_map("unserialize", array_unique(array_map("serialize", $data)));
+
+  foreach ($tires as $key => $value) {
+    $tires[$key]['count'] = 0;
+    foreach ($data as $k => $row) {
+      if ($value == $row) {
+        ++$tires[$key]['count'];
+      }
+    }
+  }
+}
+
+?>
 <header class="header">
 <div class="container">
     <div class="row">
@@ -17,6 +52,28 @@
               <strong>Kurv</strong>
               <i class="fa fa-caret-down" aria-hidden="true" style="float: right;line-height: 45px;"></i>
             </a>
+            <div class="shopping-cart-dropdown">
+              @if($pre_order && count($tires) > 0)
+                @foreach($tires as $key => $tire)
+                  <div class="cart-block">
+                    <img src="{{ asset('uploads/thumb/' . $tire['image_1']) }}">
+                    <span>{{ $tire['count'] }}x</span>
+                  </div>
+                @endforeach
+                {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
+
+                    <input type="hidden" name="price" value="{{$price}}" />
+                    <input type="hidden" name="pre_order" value="{{$pre_order->id}}" />
+                    <div id="cart-hidden-inputs">
+                      @foreach($pre_order->tires as $tire)
+                        <input type="hidden" name="tires[]" value="{{$tire->id}}" />
+                      @endforeach
+                    </div>
+
+                    {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+              @endif
+            </div>
           </div>
       </div>
     </div>

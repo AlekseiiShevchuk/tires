@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <!-- <ul class="links-collection">
                     <li class="wrap-links-2"><a href="#">Populær</a></li>
                     <li class="wrap-links-2 links-2"><a href="#">Mest solgte</a></li>
@@ -21,20 +21,13 @@
                   </li>
                 </ul>
             </div>
-
-            <!-- <div class="col-md-4">
-                    {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
-
-                    <input type="hidden" name="count" value="2" />
-                    <input type="hidden" name="price" value="25" />
-                    <input type="hidden" name="tires[]" value="1" />
-                    <input type="hidden" name="tires[]" value="2" />
-                    <input type="hidden" name="tires[]" value="3" />
-                    <input type="hidden" name="tires[]" value="4" />
-
-                    {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
-                    {!! Form::close() !!}
-            </div> -->
+            <div class="col-md-6 form-group">
+                {!! Form::open(['method' => 'POST', 'route' => ['find_tires']]) !!}
+                {!! Form::label('number', 'Find Tire By Car Number*', ['class' => 'control-label']) !!}
+                {!! Form::text('number', old('number'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                {!! Form::submit('Find tires', ['class' => 'btn btn-danger']) !!}
+                {!! Form::close() !!}
+            </div>
         </div>
     </div>
 
@@ -74,7 +67,7 @@
                             <hr>
                             <p>
                                 <a href="{{ action('UsersTireProductController@show', $tire->id) }}" class="btn btn-default">Mere Info</a>
-                                <a href="#" class="btn btn-primary" style="padding-left:30px;padding-right:30px;">Bestil nu!</a>
+                                <a class="btn btn-primary add-to-pre-order" data-tire="{{$tire->id}}" style="padding-left:30px;padding-right:30px; cursor: pointer;">Bestil nu!</a>
                             </p>
                         </div>
                     </div>
@@ -242,4 +235,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js_scripts')
+<script src="{{ url('quickadmin/js') }}/ajax.js"></script>
 @endsection

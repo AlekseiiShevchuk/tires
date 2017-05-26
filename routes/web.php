@@ -5,6 +5,8 @@
 
 Route::get('/', ['uses' => 'IndexController@index', 'as' => 'index_route']);
 
+Route::post('/find-tires', ['uses' => 'IndexController@find', 'as' => 'find_tires']);
+
 Route::get('/product/{id}', 'UsersTireProductController@show');
 
 Route::get('/auth', 'UserAuthController@index');
@@ -40,6 +42,7 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/redirect', 'UserAuthController@redirect');
+    Route::get('/order-confirmed', ['uses' => 'StaticPagesController@confirmedOrder', 'as' => 'order_confirmed']);
     Route::resource('roles', 'RolesController');
     Route::resource('contacts-subjects', 'ContactsSubjectsController');
     Route::resource('messages', 'MessagesController');
@@ -49,6 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('order', 'UsersOrderController');
     Route::resource('orders', 'OrderController');
     Route::post('/update-order-status', 'AjaxController@updateOrderStatus');
+    Route::post('/add-to-pre-order', 'AjaxController@addTireToPreOrder');
     Route::post('roles_mass_destroy', ['uses' => 'RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'UsersController');
     Route::post('users_mass_destroy', ['uses' => 'UsersController@massDestroy', 'as' => 'users.mass_destroy']);
