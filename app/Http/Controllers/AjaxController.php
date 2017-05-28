@@ -8,6 +8,7 @@ use App\Order;
 use Illuminate\Support\Facades\Auth;
 use App\PreOrder;
 use App\PreOrderTire;
+use App\TireProduct;
 
 
 class AjaxController extends Controller
@@ -57,6 +58,10 @@ class AjaxController extends Controller
      */
     public function addTireToPreOrder(Request $request)
     {
+        $data = [
+            'response_status' => true
+        ];
+
         $entity = PreOrder::where([
             'user_id' => Auth::user()->id,
             'is_confirmed' => PreOrder::NOT_CONFIRMED
@@ -71,13 +76,22 @@ class AjaxController extends Controller
             $pre_order->save();
         }
 
+        $pre_order_tire_entity = PreOrderTire::where([
+            'pre_order_id' => $pre_order->id,
+            'tire_id' => $request->tire
+        ])->first();
+
+        $data['isRepeated'] = $pre_order_tire_entity instanceof PreOrderTire ? true : false;
+
         $pre_order_tire = new PreOrderTire();
         $pre_order_tire->pre_order_id = $pre_order->id;
         $pre_order_tire->tire_id = $request->tire;
         $pre_order_tire->save();
 
-        return response()->json([
-            'response_status' => true
-        ]);
+        $tire = TireProduct::findOrFail($request->tire);
+
+        $data['tire'] = $data['isRepeated'] ? $request->tire : $tire;
+
+        return response()->json($data);
     }
 }
