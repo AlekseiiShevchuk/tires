@@ -49,7 +49,7 @@ $(document)
 		var data = {
 			tire: item.attr('data-tire')
 		};
-		
+
 		$.ajax({
 			url: '/add-to-pre-order',
 			method: 'POST',
@@ -68,20 +68,21 @@ $(document)
 
             			$(document)
             				.find('span[data-tirecounter="' + data.tire.id + '"]')
-            				.html(++counter);		
+            				.html(++counter);
             		} else {
             			var src = '/uploads/thumb/' + data.tire.image_1;
             			$('.shopping-cart-dropdown').prepend(
             				'<div class="cart-block" data-tireremove="' + data.tire.id +'">'
+										+ '<div class="cart-block__image">'
             				+ '<img src="' + src +'">'
-            				+ '<span data>'
+            				+ '<div>'
+            				+ '<div class="cart-block__info" data>'
             				+ '<span data-tirecounter="' + data.tire.id + '">'
             				+ '1'
             				+ '</span>'
-            				+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="cart-tire-remove" style="cursor: pointer;">'
-            				+ 'x'
-            				+ '</span>'
-            				+ '</span>'
+            				+ '</div>'
+										+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="cart-tire-remove" style="cursor: pointer;">'
+										+ '</span>'
             				+ '</div>'
             			);
             		}
@@ -159,4 +160,4 @@ $(document)
             }
 		});
 	})
-;	
+;
