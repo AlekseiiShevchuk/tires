@@ -34,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($order->tires as $tire)
+                            @foreach($tires as $tire)
                                 <tr>
                                     @if(!is_null($tire->image_1))
                                         <td>
@@ -54,6 +54,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div>{{ $tires->links() }}</div>
                 </div>
             </div>
       </div>

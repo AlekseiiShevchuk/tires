@@ -47,9 +47,12 @@ class UsersOrderController extends Controller
     {
         $order = Order::findOrFail($id);
 
+        $tires = $order->tires()->paginate(5);
+
         return view('users_orders.show')
             ->with('order', $order)
             ->with('status_labels', Order::STATUS_LABELS)
+            ->with('tires', $tires)
         ;
     }
 
