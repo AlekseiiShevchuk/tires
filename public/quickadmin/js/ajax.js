@@ -72,15 +72,17 @@ $(document)
             		} else {
             			var src = '/uploads/thumb/' + data.tire.image_1;
             			$('.shopping-cart-dropdown').prepend(
-            				'<div class="cart-block">'
+            				'<div class="cart-block" data-tireremove="' + data.tire.id +'">'
             				+ '<img src="' + src +'">'
             				+ '<span data>'
             				+ '<span data-tirecounter="' + data.tire.id + '">'
             				+ '1'
             				+ '</span>'
+            				+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="cart-tire-remove" style="cursor: pointer;">'
             				+ 'x'
             				+ '</span>'
-            				+'</div>'
+            				+ '</span>'
+            				+ '</div>'
             			);
             		}
 
@@ -112,6 +114,47 @@ $(document)
             		$(document).find('#cart-hidden-inputs').append(
             			'<input type="hidden" name="tires[]" value="' + data.tire.id +'">'
             		);
+            	}
+            }
+		});
+	})
+	.on('click', '.cart-tire-remove', function () {
+		var item = $(this);
+		var data = {
+			tire: item.attr('data-tireremove'),
+			pre_order: item.attr('data-preorderremove')
+		};
+
+		$.ajax({
+			url: '/remove-from-pre-order',
+			method: 'POST',
+			data: data,
+			headers: {
+                'X-CSRF-TOKEN': window._token
+            },
+            success: function (data) {
+            	if (data.response_status) {
+            		$(document)
+            			.find('div[data-tireremove="' + data.tire + '"]')
+            			.remove();
+
+            		$(document)
+            			.find('input[value="' + data.tire + '"]')
+            			.remove();
+
+            		var price = $(document)
+            			.find('#cart-price')
+            			.val();
+
+            		price = parseInt(price) - parseInt(data.price);
+
+            		$(document)
+            			.find('#cart-price')
+            			.val(price);
+
+            		if (data.isLastTire) {
+            			$(document).find('.shopping-cart-dropdown').empty();
+            		}
             	}
             }
 		});
