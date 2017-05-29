@@ -3,13 +3,14 @@ use App\PreOrder;
 
 $pre_order = null;
 
+$price = 0;
+
 if (Auth::check()) {
   $pre_order = PreOrder::where([
     'user_id' => Auth::user()->id,
     'is_confirmed' => PreOrder::NOT_CONFIRMED
   ])->first();
 }
-$price = 0;
 
 $tires = [];
 
@@ -60,10 +61,10 @@ if ($pre_order instanceof PreOrder) {
                     <span><span data-tirecounter="{{$tire['id']}}">{{ $tire['count'] }}</span>x</span>
                   </div>
                 @endforeach
-                {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
+                {!! Form::open(['method' => 'POST', 'route' => ['order.store'], 'id' => 'cart-form']) !!}
 
-                    <input type="hidden" name="price" value="{{$price}}" />
-                    <input type="hidden" name="pre_order" value="{{$pre_order->id}}" />
+                    <input type="hidden" id="cart-price" name="price" value="{{$price}}" />
+                    <input type="hidden" id="cart-order" name="pre_order" value="{{$pre_order->id}}" />
                     <div id="cart-hidden-inputs">
                       @foreach($pre_order->tires as $tire)
                         <input type="hidden" name="tires[]" value="{{$tire->id}}" />

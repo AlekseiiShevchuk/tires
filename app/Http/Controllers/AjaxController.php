@@ -90,7 +90,8 @@ class AjaxController extends Controller
 
         $tire = TireProduct::findOrFail($request->tire);
 
-        $data['tire'] = $data['isRepeated'] ? $request->tire : $tire;
+        $data['tire'] = $tire;
+        $data['pre_order'] = $pre_order;
 
         return response()->json($data);
     }
