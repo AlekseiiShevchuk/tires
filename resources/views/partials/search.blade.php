@@ -62,11 +62,14 @@ if ($pre_order instanceof PreOrder) {
                     </div>
                     <div class="cart-block__info">
                       <span data-tirecounter="{{$tire['id']}}">{{ $tire['count'] }}</span>
+                      <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="cart-tire-remove" style="cursor: pointer;">x</span>
+                      <span class="add-to-pre-order" data-version="1" data-tire="{{$tire['id']}}" style="cursor: pointer;">+</span>
+                    </span>
                     </div>
                     <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="glyphicon glyphicon-remove cart-tire-remove"></span>
                   </div>
                 @endforeach
-                {!! Form::open(['method' => 'POST', 'route' => ['order.store'], 'id' => 'cart-form']) !!}
+                {!! Form::open(['method' => 'POST', 'route' => ['order_redirect'], 'id' => 'cart-form']) !!}
 
                     <input type="hidden" id="cart-price" name="price" value="{{$price}}" />
                     <input type="hidden" id="cart-order" name="pre_order" value="{{$pre_order->id}}" />

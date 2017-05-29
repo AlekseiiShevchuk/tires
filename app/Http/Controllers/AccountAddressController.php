@@ -54,7 +54,11 @@ class AccountAddressController extends Controller
             $user->phone = $request->phone;
             $user->save();
 
-            return redirect()->route('index_route');
+            if ($request->isForOrder) {
+                return redirect()->route('order_form');
+            } else {
+                return redirect()->route('index_route');
+            }
         }
     }
 }

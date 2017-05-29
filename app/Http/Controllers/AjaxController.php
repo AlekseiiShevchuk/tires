@@ -92,6 +92,7 @@ class AjaxController extends Controller
 
         $data['tire'] = $tire;
         $data['pre_order'] = $pre_order;
+        $data['response_version'] = $request->version;
 
         return response()->json($data);
     }
@@ -132,6 +133,7 @@ class AjaxController extends Controller
 
         if (count($pre_order->preOrderTires) == 0) {
             $data['isLastTire'] = true;
+            $pre_order->delete();
         }
 
         return response()->json($data);

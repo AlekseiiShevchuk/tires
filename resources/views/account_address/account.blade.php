@@ -42,6 +42,9 @@
             <div class="form-group">
               {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'button btn btn-default button-medium']) !!}
             </div>
+
+            <input type="hidden" name="isForOrder" value="{{session('isForOrder') ? 1 : 0}}">
+            
           </div>
         </div>
       </div>
