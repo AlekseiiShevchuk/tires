@@ -21,11 +21,11 @@
                   </li>
                 </ul>
             </div>
-            <div class="col-md-6 form-group">
-                {!! Form::open(['method' => 'POST', 'route' => ['find_tires']]) !!}
+            <div class="pull-right form-group col-md-6">
+                {!! Form::open(['method' => 'POST', 'class' => 'search-content', 'route' => ['find_tires']]) !!}
                 {!! Form::label('number', 'Find Tire By Car Number*', ['class' => 'control-label']) !!}
-                {!! Form::text('number', old('number'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                {!! Form::submit('Find tires', ['class' => 'btn btn-danger']) !!}
+                {!! Form::text('number', old('number'), ['class' => 'search-content__input', 'placeholder' => '', 'required' => '']) !!}
+                {!! Form::submit('Find tires', ['class' => 'search-content__btn']) !!}
                 {!! Form::close() !!}
             </div>
         </div>

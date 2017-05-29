@@ -41,7 +41,7 @@ if ($pre_order instanceof PreOrder) {
           <a href="{{ action('IndexController@index') }}"><img src="{{ asset('index-page/fire-daek-logo-1490775043.jpg') }}" class="header__logo"></a>
       </div>
       <div class="col-md-4">
-        <div class="search-content">
+        <div class="search-content" style="margin-top:50px;">
           <input class="search-content__input" type="text" placeholder="Søg">
           <button class="search-content__btn"><i class="glyphicon glyphicon-search"></i></button>
         </div>
@@ -56,12 +56,14 @@ if ($pre_order instanceof PreOrder) {
             <div class="shopping-cart-dropdown">
               @if($pre_order && count($tires) > 0)
                 @foreach($tires as $key => $tire)
-                  <div class="cart-block" data-tireremove="{{$tire['id']}}">
-                    <img src="{{ asset('uploads/thumb/' . $tire['image_1']) }}">
-                    <span>
+                  <div class="cart-block clearfix" data-tireremove="{{$tire['id']}}">
+                    <div class="cart-block__image">
+                      <img src="{{ asset('uploads/thumb/' . $tire['image_1']) }}">
+                    </div>
+                    <div class="cart-block__info">
                       <span data-tirecounter="{{$tire['id']}}">{{ $tire['count'] }}</span>
-                      <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="cart-tire-remove" style="cursor: pointer;">x</span>
-                    </span>
+                    </div>
+                    <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="glyphicon glyphicon-remove cart-tire-remove"></span>
                   </div>
                 @endforeach
                 {!! Form::open(['method' => 'POST', 'route' => ['order.store'], 'id' => 'cart-form']) !!}
@@ -74,7 +76,9 @@ if ($pre_order instanceof PreOrder) {
                       @endforeach
                     </div>
 
-                    {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
+                    <div class="cart-block__buttons">
+                      {!! Form::submit('Til betaling', ['class' => 'btn btn-success btn-lg']) !!}
+                    </div>
                     {!! Form::close() !!}
               @endif
             </div>
