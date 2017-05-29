@@ -65,7 +65,7 @@ if ($pre_order instanceof PreOrder) {
                     </span>
                   </div>
                 @endforeach
-                {!! Form::open(['method' => 'POST', 'route' => ['order.store'], 'id' => 'cart-form']) !!}
+                {!! Form::open(['method' => 'POST', 'route' => ['order_redirect'], 'id' => 'cart-form']) !!}
 
                     <input type="hidden" id="cart-price" name="price" value="{{$price}}" />
                     <input type="hidden" id="cart-order" name="pre_order" value="{{$pre_order->id}}" />

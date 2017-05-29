@@ -64,10 +64,6 @@ class UsersOrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        if (is_null(Auth::user()->address) && is_null(Auth::user()->phone)) {
-            return redirect()->route('account-address.store');
-        }
-
         $pre_order = PreOrder::findOrFail($request->pre_order);
         $pre_order->is_confirmed = PreOrder::CONFIRMED;
         $pre_order->save(); 
@@ -86,6 +82,11 @@ class UsersOrderController extends Controller
         	$orderTire->order_id = $order->id;
         	$orderTire->save();
         }
+
+        $request->session()->forget('price');
+        $request->session()->forget('pre_order');
+        $request->session()->forget('tires');
+        $request->session()->forget('isForOrder');
 
         session(['order_identifier' => $order->identifier]);
 

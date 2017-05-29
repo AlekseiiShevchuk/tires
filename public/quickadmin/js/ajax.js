@@ -91,7 +91,7 @@ $(document)
 
 	            		if (!$('#cart-form').length) {
 	            			$('.shopping-cart-dropdown').append(
-	            				'<form method="POST" action="/order" accept-charset="UTF-8" id="cart-form">'
+	            				'<form method="POST" action="/order-redirect" accept-charset="UTF-8" id="cart-form">'
 	            				+ '<input type="hidden" name="_token" value="' + window._token +'">'
 	            				+ '<input type="hidden" id="cart-price" name="price" value="0">'
 	            				+ '<input type="hidden" id="cart-order" name="pre_order" value="' + data.pre_order.id +'">'

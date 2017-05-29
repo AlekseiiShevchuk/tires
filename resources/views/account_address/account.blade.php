@@ -48,6 +48,8 @@
                     @endif
                 </div>
             </div>
+
+            <input type="hidden" name="isForOrder" value="{{session('isForOrder') ? 1 : 0}}">
             
         </div>
     </div>
