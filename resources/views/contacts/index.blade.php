@@ -22,7 +22,7 @@
     		<div class="col-md-3">
           <div class="form-group">
     			<label>Emne</label><br>
-    			<select name="subject_id" class="form-control grey">
+    			<select name="subject_id" class="form-control grey" required>
                     @foreach($contacts_subjects as $contact_subject)
                         <option value="{{ $contact_subject->id }}">{{ $contact_subject->name }}</option>
                     @endforeach
@@ -30,11 +30,11 @@
               </div>
               <div class="form-group">
                 <label for="email_from">E-mail adresse</label>
-                <input type="email" id="email_from" name="email_from" class="form-control grey">
+                <input type="email" id="email_from" name="email_from" class="form-control grey" required>
               </div>
               <div class="form-group">
                 <label for="order_reference">Ordre reference</label>
-                <input type="text" id="order_reference" name="order_reference" class="form-control grey">
+                <input type="text" id="order_reference" name="order_reference" class="form-control grey" required>
               </div>
     		</div>
     		<div class="col-md-9">
