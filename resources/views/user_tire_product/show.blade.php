@@ -48,8 +48,7 @@
                         <hr>
                         <h4>BESKRIVELSE</h4>
                         <p>{!! $tire_product->description !!}</p>
-                        <a href="#" class="btn btn-primary"
-                           style="padding-left:30px;padding-right:30px;">Bestil nu!</a>
+                        <a class="btn btn-primary add-to-pre-order" data-version="2" data-tire="{{$tire_product->id}}" style="padding-left:30px;padding-right:30px; cursor: pointer;"><i id="glyph" class="glyphicon glyphicon-shopping-cart"></i>Bestil nu!</a>
                     </div>
                 </div>
             </div>
@@ -85,4 +84,7 @@
             </div>
         </div>
     </main>
+@endsection
+@section('js_scripts')
+<script src="{{ url('quickadmin/js') }}/ajax.js"></script>
 @endsection

@@ -67,7 +67,7 @@
                             <hr>
                             <p>
                                 <a href="{{ action('UsersTireProductController@show', $tire->id) }}" class="btn btn-default">Mere Info</a>
-                                <a class="btn btn-primary add-to-pre-order" data-tire="{{$tire->id}}" style="padding-left:30px;padding-right:30px; cursor: pointer;">Bestil nu!</a>
+                                <a class="btn btn-primary add-to-pre-order" data-version="1" data-tire="{{$tire->id}}" style="padding-left:30px;padding-right:30px; cursor: pointer;">Bestil nu!</a>
                             </p>
                         </div>
                     </div>
