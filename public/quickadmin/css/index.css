@@ -725,4 +725,7 @@ body {
 
 .shopping-cart-dropdown {
 	background-color: #484848;
+	display: none;
 }
+
+.shopping-cart-wrap:hover .shopping-cart-dropdown { display: block; }

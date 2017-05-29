@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('orders', 'OrderController');
     Route::post('/update-order-status', 'AjaxController@updateOrderStatus');
     Route::post('/add-to-pre-order', 'AjaxController@addTireToPreOrder');
+    Route::post('/remove-from-pre-order', 'AjaxController@removeTiresFromPreOrder');
     Route::post('roles_mass_destroy', ['uses' => 'RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'UsersController');
     Route::post('users_mass_destroy', ['uses' => 'UsersController@massDestroy', 'as' => 'users.mass_destroy']);

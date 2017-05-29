@@ -3,13 +3,14 @@ use App\PreOrder;
 
 $pre_order = null;
 
+$price = 0;
+
 if (Auth::check()) {
   $pre_order = PreOrder::where([
     'user_id' => Auth::user()->id,
     'is_confirmed' => PreOrder::NOT_CONFIRMED
   ])->first();
 }
-$price = 0;
 
 $tires = [];
 
@@ -45,7 +46,7 @@ if ($pre_order instanceof PreOrder) {
           <button class="search-content__btn"><i class="glyphicon glyphicon-search"></i></button>
         </div>
       </div>
-      <div class="col-md-3 col-md-offset-1">
+      <div class="col-md-3 col-md-offset-1 shopping-cart-wrap">
           <div class="shopping-cart">
             <a class="shopping-cart__main" href="#">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -55,15 +56,18 @@ if ($pre_order instanceof PreOrder) {
             <div class="shopping-cart-dropdown">
               @if($pre_order && count($tires) > 0)
                 @foreach($tires as $key => $tire)
-                  <div class="cart-block">
+                  <div class="cart-block" data-tireremove="{{$tire['id']}}">
                     <img src="{{ asset('uploads/thumb/' . $tire['image_1']) }}">
-                    <span><span data-tirecounter="{{$tire['id']}}">{{ $tire['count'] }}</span>x</span>
+                    <span>
+                      <span data-tirecounter="{{$tire['id']}}">{{ $tire['count'] }}</span>
+                      <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="cart-tire-remove" style="cursor: pointer;">x</span>
+                    </span>
                   </div>
                 @endforeach
-                {!! Form::open(['method' => 'POST', 'route' => ['order.store']]) !!}
+                {!! Form::open(['method' => 'POST', 'route' => ['order.store'], 'id' => 'cart-form']) !!}
 
-                    <input type="hidden" name="price" value="{{$price}}" />
-                    <input type="hidden" name="pre_order" value="{{$pre_order->id}}" />
+                    <input type="hidden" id="cart-price" name="price" value="{{$price}}" />
+                    <input type="hidden" id="cart-order" name="pre_order" value="{{$pre_order->id}}" />
                     <div id="cart-hidden-inputs">
                       @foreach($pre_order->tires as $tire)
                         <input type="hidden" name="tires[]" value="{{$tire->id}}" />

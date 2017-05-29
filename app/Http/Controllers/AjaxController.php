@@ -90,7 +90,49 @@ class AjaxController extends Controller
 
         $tire = TireProduct::findOrFail($request->tire);
 
-        $data['tire'] = $data['isRepeated'] ? $request->tire : $tire;
+        $data['tire'] = $tire;
+        $data['pre_order'] = $pre_order;
+
+        return response()->json($data);
+    }
+
+    /**
+     * Remove tires from pre order.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function removeTiresFromPreOrder(Request $request)
+    {
+        $data = [
+            'response_status' => true
+        ];
+
+        $pre_order = PreOrder::findOrFail($request->pre_order);
+
+        $tire = TireProduct::findOrFail($request->tire);
+
+        $pre_order_tires = PreOrderTire::where([
+            'pre_order_id' => $pre_order->id,
+            'tire_id' => $request->tire
+        ])->get();
+
+        $data['tire'] = $request->tire;
+
+        $price = 0;
+
+        foreach ($pre_order_tires as $pre_order_tire) {
+            $pre_order_tire->delete();
+            $price += $tire->special_price ? $tire->special_price : $tire->price;
+        }
+
+        $data['price'] = $price;
+
+        $data['isLastTire'] = false;
+
+        if (count($pre_order->preOrderTires) == 0) {
+            $data['isLastTire'] = true;
+        }
 
         return response()->json($data);
     }
