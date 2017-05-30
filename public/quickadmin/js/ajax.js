@@ -70,22 +70,25 @@ $(document)
 
 	            			$(document)
 	            				.find('span[data-tirecounter="' + data.tire.id + '"]')
-	            				.html(++counter);		
+	            				.html(++counter);
 	            		} else {
 	            			var src = '/uploads/thumb/' + data.tire.image_1;
 	            			$('.shopping-cart-dropdown').prepend(
-	            				'<div class="cart-block" data-tireremove="' + data.tire.id +'">'
-	            				+ '<img src="' + src +'">'	     
-	            				+ '<span data-tirecounter="' + data.tire.id + '">'
-	            				+ '1'
-	            				+ '</span>'
-	            				+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="cart-tire-remove" style="cursor: pointer;">'
-	            				+ 'x'
-	            				+ '</span>'
-	            				+ '<span class="add-to-pre-order" data-version="1" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
-	            				+ '+'
-	            				+ '</span>'
+											'<div class="cart-block" data-tireremove="' + data.tire.id +'">'
+											+ '<div class="cart-block__image">'
+	            					+ '<img src="' + src +'">'
 	            				+ '</div>'
+	            				+ '<div class="cart-block__info" data>'
+		            				+ '<span data-tirecounter="' + data.tire.id + '">'
+		            					+ '1'
+		            				+ '</span>'
+												+ '<span class="add-to-pre-order" data-version="1" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
+	            						+ '+'
+	            					+ '</span>'
+	            				+ '</div>'
+											+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="glyphicon glyphicon-remove cart-tire-remove"></span>'
+            				+ '</div>'
+										+ '</div>'
 	            			);
 	            		}
 
@@ -95,7 +98,9 @@ $(document)
 	            				+ '<input type="hidden" name="_token" value="' + window._token +'">'
 	            				+ '<input type="hidden" id="cart-price" name="price" value="0">'
 	            				+ '<input type="hidden" id="cart-order" name="pre_order" value="' + data.pre_order.id +'">'
-	            				+ '<input type="submit" class="btn btn-danger" value="Save">'
+											+	'<div class="cart-block__buttons">'
+            						+ '<input type="submit" class="btn btn-success btn-lg" value="Til betaling">'
+											+ '</div>'
 	            				+ '</form>'
 	            			);
 

@@ -16,10 +16,11 @@
 
     <div class="container-fluid product-wrap">
             @yield('content')
-            @include('partials.footer')
     </div>
 
 </div>
+
+@include('partials.footer')
 
 @include('partials.show_tire_product_js')
 @yield('js_scripts')
