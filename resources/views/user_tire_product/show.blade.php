@@ -88,7 +88,11 @@
 		                            <hr>
 		                            <p>
 		                                <a href="{{ action('UsersTireProductController@show', $product->id) }}" class="btn btn-default">Mere Info</a>
+                                        @if(Auth::check())
 		                                <a class="btn btn-primary add-to-pre-order" data-version="1" data-tire="{{$product->id}}" style="padding-left:30px;padding-right:30px; cursor: pointer;">Bestil nu!</a>
+                                        @else
+                                        <a href="{{ action('UserAuthController@index') }}" class="btn btn-primary" style="padding-left:30px;padding-right:30px; ">Bestil nu!</a>
+                                        @endif
 		                            </p>
 		                        </div>
 		                    </div>
