@@ -85,6 +85,3 @@
         </div>
     </main>
 @endsection
-@section('js_scripts')
-<script src="{{ url('quickadmin/js') }}/ajax.js"></script>
-@endsection

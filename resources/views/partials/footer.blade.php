@@ -59,7 +59,7 @@
                 <ul class="footer-list">
                     <li class="footer-list__caption">Min konto</li>
                     <li class="footer-list__item"><a href="{{ Auth::check() ? action('UsersOrderController@index') : action('UserAuthController@index') }}">Mine ordrer</a></li>
-                    <li class="footer-list__item"><a href="#">Mine kreditnotaer</a></li>
+                    <li class="footer-list__item"><a href="{{ Auth::check() ? action('CanceledOrdersController@index') : action('UserAuthController@index') }}">Mine kreditnotaer</a></li>
                     <li class="footer-list__item"><a href="{{ Auth::check() ? action('AccountAddressController@index') : action('UserAuthController@index') }}">Mine adresser</a></li>
                     <li class="footer-list__item"><a href="{{ Auth::check() ? action('AccountController@index') : action('UserAuthController@index') }}">Mine oplysninger</a></li>
                 </ul>

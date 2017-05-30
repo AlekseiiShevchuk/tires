@@ -20,6 +20,5 @@
 
 <!-- /#wrapper -->
 @include('partials.front_js')
-@yield('js_scripts')
 </body>
 </html>
