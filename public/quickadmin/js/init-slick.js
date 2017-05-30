@@ -10,11 +10,11 @@ $(document).ready(function() {
 	});
 
 	$('.product-slider-thumb').slick({
-	  slidesToShow: 6,
+	  slidesToShow: 4,
 	  slidesToScroll: 1,
 	  asNavFor: '.product-slider',
 	  dots: false,
-	  centerMode: true,
+	  centerMode: false,
 	  focusOnSelect: true
 	});
 
