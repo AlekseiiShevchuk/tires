@@ -70,14 +70,34 @@ $(document)
             			$(document)
             				.find('span[data-tirecounter="' + data.tire.id + '"]')
             				.html(++counter);
+
+            			var currentPrice = $(document)
+            				.find('span[data-tireprice="' + data.tire.id + '"]')
+            				.html();
+
+            			var attachedPrice = data.tire.special_price ? data.tire.special_price : data.tire.price;
+
+            			currentPrice = parseInt(currentPrice) + parseInt(attachedPrice);
+
+            			$(document)
+            				.find('span[data-tireprice="' + data.tire.id + '"]')
+            				.html(currentPrice);
             		} else {
             			var src = '/uploads/thumb/' + data.tire.image_1;
+            			var spanPrice = data.tire.special_price ? data.tire.special_price : data.tire.price;
             			$('.shopping-cart-dropdown').prepend(
 							'<div class="cart-block" data-tireremove="' + data.tire.id +'">'
 							+ '<div class="cart-block__image">'
 		            		+ '<img src="' + src +'">'
 		            		+ '</div>'
 		            		+ '<div class="cart-block__info" data>'
+		            		+ '<span>'
+		            		+ data.tire.name
+		            		+ '</span>'
+		            		+ '<span data-tireprice="' + data.tire.id +'">'
+		            		+ spanPrice
+		            		+ '</span>'
+		            		+ '<span>KR</span>'
 			            	+ '<span data-tirecounter="' + data.tire.id + '">'
 			            	+ '1'
 			            	+ '</span>'
@@ -128,6 +148,14 @@ $(document)
         					.removeClass('glyphicon-shopping-cart')
         					.addClass('glyphicon glyphicon-ok');
             		}
+
+            		var message = $(document).find('.message');
+
+            		message.toggleClass('message-display');
+
+            		setTimeout(function () {
+                        message.toggleClass('message-display');
+                    }, 2000);
             	}
             }
 		});

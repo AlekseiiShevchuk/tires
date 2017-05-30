@@ -878,3 +878,15 @@ body {
 .btn > #glyph {
 	margin-right: 10px;
 }
+
+.message {
+	position: fixed;
+	z-index: 90;
+	top: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.message-display {
+	display: none;
+}

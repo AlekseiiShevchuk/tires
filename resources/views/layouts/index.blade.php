@@ -13,6 +13,7 @@
 @include('partials.links_collection_1')
 
 <div id="wrapper">
+	@include('partials.message')
     @yield('content')
 </div>
 
