@@ -2,112 +2,73 @@
 
 @section('content')
     <div class="container">
-    	<div class="row">
-    		 <div class="col-md-6">
-    		 	<h3 class="content-header-3">LOG IND</h3>	
-    		 </div>
-    	</div>
+      <h1 class="page-heading">LOG IND</h1>
     </div>
-    <hr>
 
     <div class="container">
         <div class="row">
 
             <div class="col-md-6">
-                <h3 class="content-header-3">OPRET EN KONTO</h3>
-                <hr>
-                <form class="form-horizontal"
-                          role="form"
-                          method="POST"
-                          action="{{ url('auth/save-email') }}">
-                        <input type="hidden"
-                               name="_token"
-                               value="{{ csrf_token() }}">
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Email</label>
+                <form class="form-box" role="form" method="POST" action="{{ url('auth/save-email') }}">
+                  <h3 class="page-subheading">OPRET EN KONTO</h3>
 
-                            <div class="col-md-6">
-                                <input type="email"
-                                       class="form-control"
-                                       name="email"
-                                       value="{{ old('email') }}">
-                            </div>
-                        </div>
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit"
-                                        class="btn btn-primary"
-                                        style="margin-right: 15px;">
-                                    Create An Account
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                  <div class="form-group row">
+                    <div class="col-md-7">
+                      <label class="control-label">Email</label>
+                      <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button type="submit" class="button btn btn-default button-medium" style="margin-right: 15px;">
+                        Create An Account
+                    </button>
+                  </div>
+
+                </form>
             </div>
 
              <div class="col-md-6">
-                <h3 class="content-header-3">ALLEREDE KUNDE?</h3>
-                <hr>
-                <form class="form-horizontal"
-                          role="form"
-                          method="POST"
-                          action="{{ url('login') }}">
-                        <input type="hidden"
-                               name="_token"
-                               value="{{ csrf_token() }}">
+                <form class="form-box" role="form" method="POST" action="{{ url('login') }}">
+                  <h3 class="page-subheading">ALLEREDE KUNDE?</h3>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Email</label>
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                            <div class="col-md-6">
-                                <input type="email"
-                                       class="form-control"
-                                       name="email"
-                                       value="{{ old('email') }}">
-                            </div>
-                        </div>
+                  <div class="form-group row">
+                    <div class="col-md-7">
+                      <label class="control-label">Email</label>
+                      <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                    </div>
+                  </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Password</label>
+                  <div class="form-group row">
+                    <div class="col-md-7">
+                      <label class="control-label">Password</label>
+                      <input type="password" class="form-control" name="password">
+                    </div>
+                  </div>
 
-                            <div class="col-md-6">
-                                <input type="password"
-                                       class="form-control"
-                                       name="password">
-                            </div>
-                        </div>
+                  <div class="form-group">
+                    <a href="{{ route('auth.password.reset') }}">Forgot your password?</a>
+                  </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <a href="{{ route('auth.password.reset') }}">Forgot your password?</a>
-                            </div>
-                        </div>
+                  <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                  </div>
 
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <label>
-                                    <input type="checkbox"
-                                           name="remember"> Remember me
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit"
-                                        class="btn btn-primary"
-                                        style="margin-right: 15px;">
-                                    Login
-                                </button>
-                            </div>
-                        </div>
-                    </form>   
+                  <div class="form-group">
+                    <button type="submit" class="button btn btn-default button-medium" style="margin-right: 15px;">
+                      Log In
+                    </button>
+                  </div>
+                </form>
              </div>
         </div>
     </div>
-    
-    <hr>
+
 @endsection

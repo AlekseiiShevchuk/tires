@@ -814,14 +814,17 @@ body {
   background: url(/quickadmin/images/form-contact-shadow.png) center bottom no-repeat;
   background-size: contain;
 }
-.contact-form-box label {
+.contact-form-box label,
+.form-box label {
 	font-size: 13px;
 	font-weight: 600;
 }
-.contact-form-box .form-control.grey {
+.contact-form-box .form-control.grey,
+.form-box .form-control.grey {
     background: #fbfbfb;
 }
-.contact-form-box .form-control {
+.contact-form-box .form-control,
+.form-box .form-control {
   padding: 3px 5px;
   height: 27px;
   -webkit-box-shadow: none;

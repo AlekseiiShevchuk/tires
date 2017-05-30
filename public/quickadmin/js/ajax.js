@@ -75,20 +75,20 @@ $(document)
 	            			var src = '/uploads/thumb/' + data.tire.image_1;
 	            			$('.shopping-cart-dropdown').prepend(
 											'<div class="cart-block" data-tireremove="' + data.tire.id +'">'
-											+ '<div class="cart-block__image">'
-	            					+ '<img src="' + src +'">'
-	            				+ '</div>'
-	            				+ '<div class="cart-block__info" data>'
-		            				+ '<span data-tirecounter="' + data.tire.id + '">'
-		            					+ '1'
-		            				+ '</span>'
-												+ '<span class="add-to-pre-order" data-version="1" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
-	            						+ '+'
-	            					+ '</span>'
-	            				+ '</div>'
-											+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="glyphicon glyphicon-remove cart-tire-remove"></span>'
-            				+ '</div>'
-										+ '</div>'
+													+ '<div class="cart-block__image">'
+			            					+ '<img src="' + src +'">'
+			            				+ '</div>'
+			            				+ '<div class="cart-block__info" data>'
+				            				+ '<span data-tirecounter="' + data.tire.id + '">'
+				            					+ '1'
+				            				+ '</span>'
+														+ '<span class="add-to-pre-order" data-version="1" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
+						            			+ '+'
+						            		+ '</span>'
+			            				+ '</div>'
+													+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="glyphicon glyphicon-remove cart-tire-remove"></span>'
+		            				+ '</div>'
+												+ '</div>'
 	            			);
 	            		}
 
@@ -99,43 +99,10 @@ $(document)
 	            				+ '<input type="hidden" id="cart-price" name="price" value="0">'
 	            				+ '<input type="hidden" id="cart-order" name="pre_order" value="' + data.pre_order.id +'">'
 											+	'<div class="cart-block__buttons">'
-            						+ '<input type="submit" class="btn btn-success btn-lg" value="Til betaling">'
+	            					+ '<input type="submit" class="btn btn-success btn-lg" value="Til betaling">'
 											+ '</div>'
 	            				+ '</form>'
 	            			);
-
-            			$(document)
-            				.find('span[data-tirecounter="' + data.tire.id + '"]')
-            				.html(++counter);
-            		} else {
-            			var src = '/uploads/thumb/' + data.tire.image_1;
-            			$('.shopping-cart-dropdown').prepend(
-            				'<div class="cart-block" data-tireremove="' + data.tire.id +'">'
-											+ '<div class="cart-block__image">'
-	            					+ '<img src="' + src +'">'
-	            				+ '</div>'
-	            				+ '<div class="cart-block__info" data>'
-		            				+ '<span data-tirecounter="' + data.tire.id + '">'
-		            					+ '1'
-		            				+ '</span>'
-	            				+ '</div>'
-											+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="glyphicon glyphicon-remove cart-tire-remove"></span>'
-            				+ '</div>'
-										+ '</div>'
-            			);
-            		}
-
-            		if (!$('#cart-form').length) {
-            			$('.shopping-cart-dropdown').append(
-            				'<form method="POST" action="/order" accept-charset="UTF-8" id="cart-form">'
-            				+ '<input type="hidden" name="_token" value="' + window._token +'">'
-            				+ '<input type="hidden" id="cart-price" name="price" value="0">'
-            				+ '<input type="hidden" id="cart-order" name="pre_order" value="' + data.pre_order.id +'">'
-										+	'<div class="cart-block__buttons">'
-            					+ '<input type="submit" class="btn btn-success btn-lg" value="Til betaling">'
-										+ '</div>'
-            				+ '</form>'
-            			);
 
 	            			$(document).find('#cart-form').prepend(
 	            				'<div id="cart-hidden-inputs"></div>'
