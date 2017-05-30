@@ -10,7 +10,6 @@ use App\PreOrder;
 use App\PreOrderTire;
 use App\TireProduct;
 
-
 class AjaxController extends Controller
 {
     /**

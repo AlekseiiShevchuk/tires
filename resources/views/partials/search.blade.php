@@ -25,9 +25,11 @@ if ($pre_order instanceof PreOrder) {
 
   foreach ($tires as $key => $value) {
     $tires[$key]['count'] = 0;
+    $tires[$key]['price'] = 0;
     foreach ($data as $k => $row) {
       if ($value == $row) {
         ++$tires[$key]['count'];
+        $tires[$key]['price'] += $row['special_price'] ? $row['special_price'] : $row['price'];
       }
     }
   }
@@ -61,6 +63,9 @@ if ($pre_order instanceof PreOrder) {
                       <img src="{{ asset('uploads/thumb/' . $tire['image_1']) }}">
                     </div>
                     <div class="cart-block__info">
+                      <span>{{ $tire['name'] }}</span>
+                      <span data-tireprice="{{$tire['id']}}">{{ $tire['price'] }}</span>
+                      <span>KR</span>
                       <span data-tirecounter="{{$tire['id']}}">{{ $tire['count'] }}</span>
                       <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="cart-tire-remove" style="cursor: pointer;">x</span>
                       <span class="add-to-pre-order" data-version="1" data-tire="{{$tire['id']}}" style="cursor: pointer;">+</span>

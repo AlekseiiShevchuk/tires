@@ -13,7 +13,7 @@
   @include('partials.links_collection_1')
 
 <div id="wrapper">
-
+	@include('partials.message')
     <div class="container-fluid product-wrap">
             @yield('content')
     </div>
