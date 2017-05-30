@@ -804,24 +804,27 @@ body {
 .contact-form-box {
   padding: 20px 0 0 0;
   margin: 0 0 30px 0;
-  background: url(/uploads/contact-form-box.png) repeat-x #fff;
+  background: url(/quickadmin/images/contact-form-box.png) repeat-x #fff;
   -moz-box-shadow: rgba(0,0,0,0.17) 0 5px 13px;
   -webkit-box-shadow: rgba(0,0,0,0.17) 0 5px 13px;
   box-shadow: rgba(0,0,0,0.17) 0 5px 13px;
 }
 .contact-form-box fieldset {
   padding: 0 19px 21px 19px;
-  background: url(/uploads/form-contact-shadow.png) center bottom no-repeat;
+  background: url(/quickadmin/images/form-contact-shadow.png) center bottom no-repeat;
   background-size: contain;
 }
-.contact-form-box label {
+.contact-form-box label,
+.form-box label {
 	font-size: 13px;
 	font-weight: 600;
 }
-.contact-form-box .form-control.grey {
+.contact-form-box .form-control.grey,
+.form-box .form-control.grey {
     background: #fbfbfb;
 }
-.contact-form-box .form-control {
+.contact-form-box .form-control,
+.form-box .form-control {
   padding: 3px 5px;
   height: 27px;
   -webkit-box-shadow: none;
@@ -870,4 +873,8 @@ body {
   padding: 14px 18px 13px;
   margin: 0 0 30px 0;
   line-height: 23px;
+}
+
+.btn > #glyph {
+	margin-right: 10px;
 }
