@@ -22,14 +22,17 @@ class UsersOrderController extends Controller
     }
 
     /**
-     * Show list of user orders.
+     * Show list of user orders except orders with status canceled.
      *
      * @param  \App\Http\Requests\StoreOrderRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $orders = Order::orderBy('id', 'DESC')->where('user_id', Auth::user()->id)->get();
+        $orders = Order::orderBy('id', 'DESC')
+            ->where('user_id', '=', Auth::user()->id)->get()
+            ->where('status', '!=', Order::CANCELED)
+        ;
 
         return view('users_orders.index')
             ->with('orders', $orders)

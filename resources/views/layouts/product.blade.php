@@ -23,7 +23,6 @@
 @include('partials.footer')
 
 @include('partials.show_tire_product_js')
-@yield('js_scripts')
 
 </body>
 </html>
