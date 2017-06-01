@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/add-to-pre-order', 'AjaxController@addTireToPreOrder');
     Route::post('/remove-from-pre-order', 'AjaxController@removeTiresFromPreOrder');
     Route::post('/order-redirect', ['uses' => 'HandlerController@order', 'as' => 'order_redirect']);
-    Route::get('/order-form', ['uses' => 'HandlerController@orderForm', 'as' => 'order_form']);
+    Route::get('/order-confirmation', ['uses' => 'HandlerController@orderForm', 'as' => 'order_form']);
     Route::get('/orders-canceled', ['uses' => 'CanceledOrdersController@index', 'as' => 'orders_canceled']);
     Route::post('roles_mass_destroy', ['uses' => 'RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'UsersController');

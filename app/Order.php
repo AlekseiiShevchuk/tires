@@ -17,6 +17,15 @@ class Order extends Model
 		self::PAID => 'Paid'
 	];
 
+	//Delivery Types
+	const CARRIER = 0;
+	const PICK_UP_IN_STORE = 1;
+
+	const DELIVERY_LABELS = [
+		self::CARRIER => 'Carrier',
+		self::PICK_UP_IN_STORE => 'Pick up in store'
+	];
+
     public function user()
     {
         return $this->belongsTo('App\User');

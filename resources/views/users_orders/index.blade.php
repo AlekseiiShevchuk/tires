@@ -21,6 +21,7 @@
                         <th width="100px">Count</th>
                         <th width="100px">Price</th>
                         <th width="100px">Status</th>
+                        <th width="100px">Delivery</th>
                     </tr>
                 </thead>
                 
@@ -31,6 +32,7 @@
                                 <td width="100px">{{ $order->count }}</td>
                                 <td width="100px">{{ $order->price }}</td>
                                 <td width="100px">{{ $status_labels[$order->status] }}</td>
+                                <td>{{ $delivery_labels[$order->delivery_type] }}</td>
                             </tr>
                         @endforeach
                 </tbody>

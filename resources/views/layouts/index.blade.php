@@ -15,6 +15,7 @@
 <div id="wrapper">
 	@include('partials.message')
     @yield('content')
+    @yield('js_scripts')
 </div>
 
 @include('partials.footer')

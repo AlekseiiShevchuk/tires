@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\PreOrder;
+use App\Order;
 
 class HandlerController extends Controller
 {
@@ -30,6 +32,20 @@ class HandlerController extends Controller
      */
     public function orderForm()
     {
-        return view('handler.order_from');
+        $pre_order = PreOrder::findOrFail(session('pre_order'));
+
+        $total_price = 0;
+
+        foreach ($pre_order->tires as $tire) {
+            $total_price += $tire->special_price ? $tire->special_price : $tire->price;
+        }
+
+        $delivery = Order::DELIVERY_LABELS;
+
+        return view('handler.order_from')
+            ->with('pre_order', $pre_order)
+            ->with('total_price', $total_price)
+            ->with('delivery', $delivery)
+        ;
     }
 }

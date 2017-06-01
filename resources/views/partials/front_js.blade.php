@@ -4,6 +4,7 @@
 <script src="{{ url('quickadmin/js') }}/init-slick.js" type="text/javascript"></script>
 <script src="{{ url('quickadmin/js') }}/bootstrap.min.js" type="text/javascript"></script>
 <script src="{{ url('quickadmin/js') }}/ajax.js"></script>
+<script src="{{ url('quickadmin/js') }}/order-confirm.js"></script>
 <script type="text/javascript">
         jQuery(document).ready(function ($) {
 
