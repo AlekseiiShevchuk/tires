@@ -37,6 +37,7 @@ class UsersOrderController extends Controller
         return view('users_orders.index')
             ->with('orders', $orders)
             ->with('status_labels', Order::STATUS_LABELS)
+            ->with('delivery_labels', Order::DELIVERY_LABELS)
         ;
     }
 
@@ -56,6 +57,7 @@ class UsersOrderController extends Controller
             ->with('order', $order)
             ->with('status_labels', Order::STATUS_LABELS)
             ->with('tires', $tires)
+            ->with('delivery_labels', Order::DELIVERY_LABELS)
         ;
     }
 
@@ -77,6 +79,7 @@ class UsersOrderController extends Controller
         $order->count = count($request->tires);
         $order->price = $request->price;
         $order->identifier = Auth::user()->id . time();
+        $order->delivery_type = $request->delivery;
         $order->save();
 
         foreach ($request->tires as $tire) {

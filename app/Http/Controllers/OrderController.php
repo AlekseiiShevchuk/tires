@@ -24,6 +24,7 @@ class OrderController extends Controller
         return view('orders.index')
             ->with('orders', $orders)
             ->with('status_labels', Order::STATUS_LABELS)
+            ->with('delivery_labels', Order::DELIVERY_LABELS)
         ;
     }
 
@@ -46,6 +47,7 @@ class OrderController extends Controller
         return view('orders.show')
             ->with('order', $order)
             ->with('status_labels', Order::STATUS_LABELS)
+            ->with('delivery_labels', Order::DELIVERY_LABELS)
             ->with('tires', $tires)
         ;
     }

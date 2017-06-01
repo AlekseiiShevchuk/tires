@@ -11,6 +11,11 @@ class PreOrder extends Model
 	
     protected $table = 'pre_orders';
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
     public function preOrderTires()
     {
         return $this->hasMany('App\PreOrderTire', 'pre_order_id', 'id');

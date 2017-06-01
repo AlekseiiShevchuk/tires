@@ -16,6 +16,7 @@
                         <th>@lang('quickadmin.orders.fields.count')</th>
                         <th>@lang('quickadmin.orders.fields.price')</th>
                         <th>@lang('quickadmin.orders.fields.status')</th>
+                        <th>@lang('quickadmin.orders.fields.delivery')</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -37,6 +38,7 @@
                                     </select>
                                     <a data-order="{{$order->id}}" style="display: none;" class="btn btn-danger btn-xs hide-select-option">Hide</a>
                                 </td>
+                                <td>{{ $delivery_labels[$order->delivery_type] }}</td>
                                 <td>
                                     @can('order_show')
                                     <a href="{{ route('orders.show',[$order->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>

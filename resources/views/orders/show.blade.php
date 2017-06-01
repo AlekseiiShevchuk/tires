@@ -17,6 +17,8 @@
                     <p>{{ $order->count }}</p>
                     <label>Price:</label>
                     <p>{{ $order->price }}</p>
+                    <label>Delivery</label>
+                    <p>{{$delivery_labels[$order->delivery_type]}}</p>
                     <label>Status</label>
                     <p id="order-label-status">{{$status_labels[$order->status]}}</p>
                     <label>Change status</label>
