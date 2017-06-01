@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.handler')
 
 @section('content')
 <div class="container">
@@ -13,7 +13,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<p><b>Total price: </b>{{ $total_price }}</p>
+			<p><b>Total price: </b><span id="price">{{ $price }}</span></p>
 			<table class="table">
                 <thead>
                     <tr>
@@ -22,26 +22,30 @@
                         <th>Brand</th>
                         <th>Size</th>
                         <th>Price</th>
-                        <th>Special Price</th>                       
+                        <th>Count</th>
+                        <th></th>                     
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($pre_order->tires as $tire)
-                        <tr>
-                            @if(!is_null($tire->image_1))
+                    @foreach($tires as $tire)
+                        <tr data-tire="{{$tire['id']}}">
+                            @if(!is_null($tire['image_1']))
                                 <td>
-                                    <a href="{{ asset('uploads/' . $tire->image_1) }}" target="_blank"><img src="{{ asset('uploads/thumb/' . $tire->image_1) }}"/></a>
+                                    <a href="{{ asset('uploads/' . $tire['image_1']) }}" target="_blank"><img src="{{ asset('uploads/thumb/' . $tire['image_1']) }}"/></a>
                                 </td>
                             @else
                                 <td></td>
                             @endif
-                            <td><a href="{{ action('UsersTireProductController@show', $tire->id) }}" target="_blank">
-                                {{$tire->name}}
+                            <td><a href="{{ action('UsersTireProductController@show', $tire['id']) }}" target="_blank">
+                                {{$tire['name']}}
                             </a></td>
-                            <td>{{$tire->brand->name}}</td>
-                            <td>{{$tire->size->size}}</td>
-                            <td>{{$tire->price}}</td>
-                            <td>{{!is_null($tire->special_price) ? $tire->special_price : '-'}}</td>
+                            <td>{{$tire['brand']['name']}}</td>
+                            <td>{{$tire['size']['size']}}</td>
+                            <td>{{$tire['price']}}</td>
+                            <td>{{$tire['count']}}</td>
+                            <td>
+                            	<span data-tireremove="{{$tire['id']}}" data-preorderremove="{{session('pre_order')}}" class="glyphicon glyphicon-trash pre-order-tire-remove" style="cursor: pointer;"></span>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -51,7 +55,7 @@
 </div>
 {!! Form::open(['method' => 'POST', 'route' => ['order.store'], 'id' => 'cart-form']) !!}
 
-<input type="hidden" id="cart-price" name="price" value="{{session('price')}}" />
+<input type="hidden" id="form-price" name="price" value="{{session('price')}}" />
 <input type="hidden" id="cart-order" name="pre_order" value="{{session('pre_order')}}" />
 <div id="cart-hidden-inputs">
 @foreach(session('tires') as $tire)
@@ -60,7 +64,11 @@
 </div>
 <div class="delivery-radio">
 @foreach($delivery as $key => $value)
- 	<span>{{ $value }}</span> <input type="radio" name="delivery" value="{{$key}}" />
+	@if($key == 0)
+	<span>{{ $value }}</span> <input type="radio" name="delivery" value="{{$key}}" checked />
+	@else
+	<span>{{ $value }}</span> <input type="radio" name="delivery" value="{{$key}}" />
+	@endif
 @endforeach
 </div>
 <div><input type="checkbox" value="0" class="checkbox-confirmation" name="isConfirmed"> I confrim this order.</div>
