@@ -132,7 +132,9 @@ $(document)
             			.find('#cart-price')
             			.val();
 
-            		price = parseInt(price) + parseInt(data.tire.price);
+                        var inputPrice = data.tire.special_price ? data.tire.special_price : data.tire.price;
+
+            		price = parseInt(price) + parseInt(inputPrice);
 
             		$(document)
             			.find('#cart-price')
@@ -201,4 +203,49 @@ $(document)
             }
 		});
 	})
+      .on('click', '.pre-order-tire-remove', function () {
+            var item = $(this);
+            var data = {
+                  tire: item.attr('data-tireremove'),
+                  pre_order: item.attr('data-preorderremove')
+            };
+
+            $.ajax({
+                  url: '/remove-from-pre-order',
+                  method: 'POST',
+                  data: data,
+                  headers: {
+                      'X-CSRF-TOKEN': window._token
+                  },
+                  success: function (data) {
+                        if (data.response_status) {
+                              if (data.isLastTire) {
+                                    window.location = '/';
+                              }
+
+                              $(document)
+                                    .find('tr[data-tire="' + data.tire + '"]')
+                                    .remove();
+
+                              $(document)
+                                    .find('input[value="' + data.tire + '"]')
+                                    .remove();
+
+                              var price = $(document)
+                                    .find('#price')
+                                    .html();
+
+                              price = parseInt(price) - parseInt(data.price);
+
+                              $(document)
+                                    .find('#form-price')
+                                    .val(price);
+
+                              $(document)
+                                    .find('#price')
+                                    .html(price);
+                        }
+                  }
+            });
+      })
 ;
