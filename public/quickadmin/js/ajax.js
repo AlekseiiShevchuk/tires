@@ -86,8 +86,8 @@ $(document)
             			var src = '/uploads/thumb/' + data.tire.image_1;
             			var spanPrice = data.tire.special_price ? data.tire.special_price : data.tire.price;
             			$('.shopping-cart-dropdown').prepend(
-							'<div class="cart-block" data-tireremove="' + data.tire.id +'">'
-							+ '<div class="cart-block__image">'
+						'<div class="cart-block" data-tireremove="' + data.tire.id +'">'
+						+ '<div class="cart-block__image">'
 		            		+ '<img src="' + src +'">'
 		            		+ '</div>'
 		            		+ '<div class="cart-block__info" data>'
@@ -101,13 +101,16 @@ $(document)
 			            	+ '<span data-tirecounter="' + data.tire.id + '">'
 			            	+ '1'
 			            	+ '</span>'
-							+ '<span class="add-to-pre-order" data-version="1" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
-					        + '+'
-					        + '</span>'
+						+ '<span class="add-to-pre-order" data-version="1" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
+					      + '+'
+					      + '</span>'
+                                    + '<span class="remove-one-from-cart" data-preorder="' + data.pre_order.id +'" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
+                                    + '-'
+                                    + '</span>'
 		            		+ '</div>'
-							+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="glyphicon glyphicon-remove cart-tire-remove"></span>'
+						+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="glyphicon glyphicon-remove cart-tire-remove"></span>'
 	            			+ '</div>'
-							+ '</div>'
+						+ '</div>'
             			);
             		}
 
@@ -244,6 +247,203 @@ $(document)
                               $(document)
                                     .find('#price')
                                     .html(price);
+                        }
+                  }
+            });
+      })
+      .on('click', '.add-one-tire', function () {
+            var item = $(this);
+            var data = {
+                  tire: item.attr('data-tire'),
+                  version: item.attr('data-version')
+            };
+
+            $.ajax({
+                  url: '/add-to-pre-order',
+                  method: 'POST',
+                  data: data,
+                  headers: {
+                      'X-CSRF-TOKEN': window._token
+                  },
+                  success: function (data) {
+                        if (data.response_status) {
+                              var counter = $(document)
+                                    .find('td[data-tirecounter="' + data.tire.id + '"]')
+                                    .html();
+
+                              counter = parseInt(counter);
+
+                              $(document)
+                                    .find('td[data-tirecounter="' + data.tire.id + '"]')
+                                    .html(++counter);
+
+                              var currentPrice = $(document)
+                                    .find('td[data-tireprice="' + data.tire.id + '"]')
+                                    .html();
+
+                              var attachedPrice = data.tire.special_price ? data.tire.special_price : data.tire.price;
+
+                              currentPrice = parseInt(currentPrice) + parseInt(attachedPrice);
+
+                              $(document)
+                                    .find('td[data-tireprice="' + data.tire.id + '"]')
+                                    .html(currentPrice);
+
+                              var price = $(document)
+                                    .find('#price')
+                                    .html();
+
+                              price = parseInt(price) + parseInt(attachedPrice);
+
+                              $(document)
+                                    .find('#form-price')
+                                    .val(price);
+
+                              $(document)
+                                    .find('#price')
+                                    .html(price);
+
+                              $(document).find('#cart-hidden-inputs').append(
+                                    '<input type="hidden" name="tires[]" value="' + data.tire.id +'">'
+                              );
+                        }
+                  }
+            });
+      })
+      .on('click', '.remove-one-tire', function () {
+            var item = $(this);
+            var data = {
+                  tire: item.attr('data-tire'),
+                  pre_order: item.attr('data-preorder')
+            };
+
+            $.ajax({
+                  url: '/remove-tire-from-pre-order',
+                  method: 'POST',
+                  data: data,
+                  headers: {
+                      'X-CSRF-TOKEN': window._token
+                  },
+                  success: function (data) {
+                        if (data.response_status) {
+                              var counter = $(document)
+                                    .find('td[data-tirecounter="' + data.tire.id + '"]')
+                                    .html();
+
+                              counter = parseInt(counter);
+
+                              $(document)
+                                    .find('td[data-tirecounter="' + data.tire.id + '"]')
+                                    .html(--counter);
+
+                              var currentPrice = $(document)
+                                    .find('td[data-tireprice="' + data.tire.id + '"]')
+                                    .html();
+
+                              var attachedPrice = data.tire.special_price ? data.tire.special_price : data.tire.price;
+
+                              currentPrice = parseInt(currentPrice) - parseInt(attachedPrice);
+
+                              $(document)
+                                    .find('td[data-tireprice="' + data.tire.id + '"]')
+                                    .html(currentPrice);
+
+                              var price = $(document)
+                                    .find('#price')
+                                    .html();
+
+                              price = parseInt(price) - parseInt(attachedPrice);
+
+                              $(document)
+                                    .find('#form-price')
+                                    .val(price);
+
+                              $(document)
+                                    .find('#price')
+                                    .html(price);
+
+                              $(document)
+                                    .find('input[value="' + data.tire.id + '"]')
+                                    .first()
+                                    .remove();
+
+                              if (data.isLastTire) {
+                                    $(document)
+                                          .find('tr[data-tire="' + data.tire.id + '"]')
+                                          .remove();
+                              }
+
+                              if (data.isNoMoreTires) {
+                                    window.location = '/';
+                              }
+                        }
+                  }
+            });
+      })
+      .on('click', '.remove-one-from-cart', function () {
+            var item = $(this);
+            var data = {
+                  tire: item.attr('data-tire'),
+                  pre_order: item.attr('data-preorder')
+            };
+
+            $.ajax({
+                  url: '/remove-tire-from-pre-order',
+                  method: 'POST',
+                  data: data,
+                  headers: {
+                      'X-CSRF-TOKEN': window._token
+                  },
+                  success: function (data) {
+                        if (data.response_status) {
+                              var counter = $(document)
+                                    .find('span[data-tirecounter="' + data.tire.id + '"]')
+                                    .html();
+
+                              counter = parseInt(counter);
+
+                              $(document)
+                                    .find('span[data-tirecounter="' + data.tire.id + '"]')
+                                    .html(--counter);
+
+                              var currentPrice = $(document)
+                                    .find('span[data-tireprice="' + data.tire.id + '"]')
+                                    .html();
+
+                              var attachedPrice = data.tire.special_price ? data.tire.special_price : data.tire.price;
+
+                              currentPrice = parseInt(currentPrice) - parseInt(attachedPrice);
+
+                              $(document)
+                                    .find('span[data-tireprice="' + data.tire.id + '"]')
+                                    .html(currentPrice);
+
+                              var price = $(document)
+                                    .find('#cart-price')
+                                    .val();
+
+                              var inputPrice = data.tire.special_price ? data.tire.special_price : data.tire.price;
+
+                              price = parseInt(price) - parseInt(inputPrice);
+
+                              $(document)
+                                    .find('#cart-price')
+                                    .val(price);
+
+                              $(document)
+                                    .find('input[value="' + data.tire.id + '"]')
+                                    .first()
+                                    .remove();
+
+                              if (data.isLastTire) {
+                                    $(document)
+                                          .find('div[data-tireremove="' + data.tire + '"]')
+                                          .remove();
+                              }
+
+                              if (data.isNoMoreTires) {
+                                    $(document).find('.shopping-cart-dropdown').empty();
+                              }
                         }
                   }
             });
