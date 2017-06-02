@@ -22,6 +22,7 @@
                         <th>Brand</th>
                         <th>Size</th>
                         <th>Price</th>
+                        <th></th>
                         <th>Count</th>
                         <th></th>                     
                     </tr>
@@ -41,8 +42,12 @@
                             </a></td>
                             <td>{{$tire['brand']['name']}}</td>
                             <td>{{$tire['size']['size']}}</td>
-                            <td>{{$tire['price']}}</td>
-                            <td>{{$tire['count']}}</td>
+                            <td data-tireprice="{{$tire['id']}}">{{$tire['price']}}</td>
+                            <td>
+                            	<span data-tire="{{$tire['id']}}" data-version="3" class="glyphicon glyphicon-plus add-one-tire" style="cursor: pointer;"></span>
+                            	<span data-tire="{{$tire['id']}}" data-preorder="{{session('pre_order')}}" class="glyphicon glyphicon-minus remove-one-tire" style="cursor: pointer;"></span>
+                            </td>
+                            <td data-tirecounter="{{$tire['id']}}">{{$tire['count']}}</td>
                             <td>
                             	<span data-tireremove="{{$tire['id']}}" data-preorderremove="{{session('pre_order')}}" class="glyphicon glyphicon-trash pre-order-tire-remove" style="cursor: pointer;"></span>
                             </td>

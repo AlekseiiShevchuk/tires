@@ -137,4 +137,44 @@ class AjaxController extends Controller
 
         return response()->json($data);
     }
+
+    /**
+     * Remove tire from pre order.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function removeTireFromPreOrder(Request $request)
+    {
+        $data = [
+            'response_status' => true
+        ];
+
+        $pre_order = PreOrder::findOrFail($request->pre_order);
+
+        $tire = TireProduct::findOrFail($request->tire);
+
+        $data['tire'] = $tire;
+
+        $pre_order_tire = PreOrderTire::where([
+            'pre_order_id' => $pre_order->id,
+            'tire_id' => $request->tire
+        ])->first();
+
+        $pre_order_tire->delete();
+
+        $data['isLastTire'] = false;
+
+        $data['isNoMoreTires'] = false;
+
+        if (count($pre_order->preOrderTires->where('tire_id', $request->tire)) == 0) {
+            $data['isLastTire'] = true;
+        }
+
+        if (count($pre_order->preOrderTires) == 0) {
+            $data['isNoMoreTires'] = true;
+        }
+
+        return response()->json($data);
+    }
 }

@@ -69,6 +69,7 @@ if ($pre_order instanceof PreOrder) {
                       <span data-tirecounter="{{$tire['id']}}">{{ $tire['count'] }}</span>
                       <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="cart-tire-remove" style="cursor: pointer;">x</span>
                       <span class="add-to-pre-order" data-version="1" data-tire="{{$tire['id']}}" style="cursor: pointer;">+</span>
+                      <span class="remove-one-from-cart" data-tire="{{$tire['id']}}" data-preorder="{{$pre_order->id}}" style="cursor: pointer;">-</span>
                     </span>
                     </div>
                     <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="glyphicon glyphicon-remove cart-tire-remove"></span>
