@@ -91,22 +91,30 @@ $(document)
 		            		+ '<img src="' + src +'">'
 		            		+ '</div>'
 		            		+ '<div class="cart-block__info" data>'
-		            		+ '<span>'
-		            		+ data.tire.name
-		            		+ '</span>'
-		            		+ '<span data-tireprice="' + data.tire.id +'">'
-		            		+ spanPrice
-		            		+ '</span>'
-		            		+ '<span>KR</span>'
-			            	+ '<span data-tirecounter="' + data.tire.id + '">'
-			            	+ '1'
-			            	+ '</span>'
-						+ '<span class="add-to-pre-order" data-version="1" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
-					      + '+'
+										+ ' <div class="product-name">'
+											+ '<span class="quantity-formated">'
+												+ '<span <span data-tirecounter="' + data.tire.id + '">1</span>'
+												+ '<span class="quantity-formated__x">&nbsp;x&nbsp;</span>'
+											+ '</span>'
+			            		+ '<span>'
+			            			+ data.tire.name
+			            		+ '</span>'
+										+ '</div>'
+										+ '<div class="cart-info__price">'
+			            		+ '<span data-tireprice="' + data.tire.id +'">'
+			            		+ spanPrice
+			            		+ '</span>'
+			            		+ '<span>KR</span>'
+										+ '</div>'
+			            	// + '<span data-tirecounter="' + data.tire.id + '">'
+			            	// + '1'
+			            	// + '</span>'
+						+ '<span class="add-to-pre-order shopping-cart__add-to-pre-order" data-version="1" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
+					      + '  <i class="glyphicon glyphicon-plus"></i>'
 					      + '</span>'
-                                    + '<span class="remove-one-from-cart" data-preorder="' + data.pre_order.id +'" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
-                                    + '-'
-                                    + '</span>'
+                      + '<span class="remove-one-from-cart shopping-cart__remove-one-from-cart" data-preorder="' + data.pre_order.id +'" data-tire="' + data.tire.id +'" style="cursor: pointer; margin-left: 5px;">'
+                      + '  <i class="glyphicon glyphicon-minus"></i>'
+                      + '</span>'
 		            		+ '</div>'
 						+ '<span data-tireremove="' + data.tire.id +'" data-preorderremove="' + data.pre_order.id +'" class="glyphicon glyphicon-remove cart-tire-remove"></span>'
 	            			+ '</div>'
@@ -116,7 +124,11 @@ $(document)
 
             		if (!$('#cart-form').length) {
             			$('.shopping-cart-dropdown').append(
-            				'<form method="POST" action="/order-redirect" accept-charset="UTF-8" id="cart-form">'
+										'<div class="cart-prices-line">'
+		                  + '<span>I alt</span>'
+		                  + '<span class="price cart-block-total"></span>'
+		                + '</div>'
+            				+ '<form method="POST" action="/order-redirect" accept-charset="UTF-8" id="cart-form">'
             				+ '<input type="hidden" name="_token" value="' + window._token +'">'
             				+ '<input type="hidden" id="cart-price" name="price" value="0">'
             				+ '<input type="hidden" id="cart-order" name="pre_order" value="' + data.pre_order.id +'">'
@@ -268,17 +280,17 @@ $(document)
                   success: function (data) {
                         if (data.response_status) {
                               var counter = $(document)
-                                    .find('td[data-tirecounter="' + data.tire.id + '"]')
+                                    .find('div[data-tirecounter="' + data.tire.id + '"]')
                                     .html();
 
                               counter = parseInt(counter);
 
                               $(document)
-                                    .find('td[data-tirecounter="' + data.tire.id + '"]')
+                                    .find('div[data-tirecounter="' + data.tire.id + '"]')
                                     .html(++counter);
 
                               var currentPrice = $(document)
-                                    .find('td[data-tireprice="' + data.tire.id + '"]')
+                                    .find('span[data-tireprice="' + data.tire.id + '"]')
                                     .html();
 
                               var attachedPrice = data.tire.special_price ? data.tire.special_price : data.tire.price;
@@ -286,7 +298,7 @@ $(document)
                               currentPrice = parseInt(currentPrice) + parseInt(attachedPrice);
 
                               $(document)
-                                    .find('td[data-tireprice="' + data.tire.id + '"]')
+                                    .find('span[data-tireprice="' + data.tire.id + '"]')
                                     .html(currentPrice);
 
                               var price = $(document)
@@ -327,17 +339,17 @@ $(document)
                   success: function (data) {
                         if (data.response_status) {
                               var counter = $(document)
-                                    .find('td[data-tirecounter="' + data.tire.id + '"]')
+                                    .find('div[data-tirecounter="' + data.tire.id + '"]')
                                     .html();
 
                               counter = parseInt(counter);
 
                               $(document)
-                                    .find('td[data-tirecounter="' + data.tire.id + '"]')
+                                    .find('div[data-tirecounter="' + data.tire.id + '"]')
                                     .html(--counter);
 
                               var currentPrice = $(document)
-                                    .find('td[data-tireprice="' + data.tire.id + '"]')
+                                    .find('span[data-tireprice="' + data.tire.id + '"]')
                                     .html();
 
                               var attachedPrice = data.tire.special_price ? data.tire.special_price : data.tire.price;
@@ -345,7 +357,7 @@ $(document)
                               currentPrice = parseInt(currentPrice) - parseInt(attachedPrice);
 
                               $(document)
-                                    .find('td[data-tireprice="' + data.tire.id + '"]')
+                                    .find('span[data-tireprice="' + data.tire.id + '"]')
                                     .html(currentPrice);
 
                               var price = $(document)

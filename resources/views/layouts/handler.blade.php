@@ -9,6 +9,8 @@
 
 @include('partials.slider')
 @include('partials.top-header')
+@include('partials.search')
+@include('partials.links_collection_1')
 
 <div id="wrapper">
     @yield('content')

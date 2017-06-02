@@ -63,18 +63,33 @@ if ($pre_order instanceof PreOrder) {
                       <img src="{{ asset('uploads/thumb/' . $tire['image_1']) }}">
                     </div>
                     <div class="cart-block__info">
-                      <span>{{ $tire['name'] }}</span>
-                      <span data-tireprice="{{$tire['id']}}">{{ $tire['price'] }}</span>
-                      <span>KR</span>
-                      <span data-tirecounter="{{$tire['id']}}">{{ $tire['count'] }}</span>
-                      <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="cart-tire-remove" style="cursor: pointer;">x</span>
-                      <span class="add-to-pre-order" data-version="1" data-tire="{{$tire['id']}}" style="cursor: pointer;">+</span>
-                      <span class="remove-one-from-cart" data-tire="{{$tire['id']}}" data-preorder="{{$pre_order->id}}" style="cursor: pointer;">-</span>
+                      <div class="product-name">
+                        <span class="quantity-formated">
+                          <span data-tirecounter="{{$tire['id']}}">{{ $tire['count'] }}</span>
+                          <span class="quantity-formated__x">x</span>
+                        </span>
+                        <span>{{ $tire['name'] }}</span>
+                      </div>
+                      <div class="cart-info__price">
+                        <span data-tireprice="{{$tire['id']}}">{{ $tire['price'] }}</span>
+                        <span>KR</span>
+                      </div>
+                      <!-- <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="cart-tire-remove" style="cursor: pointer;">x</span> -->
+                      <span class="add-to-pre-order shopping-cart__add-to-pre-order" data-version="1" data-tire="{{$tire['id']}}" style="cursor: pointer;">
+                        <i class="glyphicon glyphicon-plus"></i>
+                      </span>
+                      <span class="remove-one-from-cart shopping-cart__remove-one-from-cart" data-tire="{{$tire['id']}}" data-preorder="{{$pre_order->id}}" style="cursor: pointer;">
+                        <i class="glyphicon glyphicon-minus"></i>
+                      </span>
                     </span>
                     </div>
                     <span data-tireremove="{{$tire['id']}}" data-preorderremove="{{$pre_order->id}}" class="glyphicon glyphicon-remove cart-tire-remove"></span>
                   </div>
                 @endforeach
+                <div class="cart-prices-line">
+                  <span>I alt</span>
+                  <span class="price cart-block-total"></span>
+                </div>
                 {!! Form::open(['method' => 'POST', 'route' => ['order_redirect'], 'id' => 'cart-form']) !!}
 
                     <input type="hidden" id="cart-price" name="price" value="{{$price}}" />
