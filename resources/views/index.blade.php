@@ -21,14 +21,26 @@
                   </li>
                 </ul>
             </div>
-            <div class="pull-right form-group col-md-6">
-                {!! Form::open(['method' => 'POST', 'class' => 'search-content', 'route' => ['find_tires']]) !!}
-                {!! Form::label('number', 'Find Tire By Car Number*', ['class' => 'control-label']) !!}
-                {!! Form::text('number', old('number'), ['class' => 'search-content__input', 'placeholder' => '', 'required' => '']) !!}
-                {!! Form::submit('Find tires', ['class' => 'search-content__btn']) !!}
-                {!! Form::close() !!}
-            </div>
+
         </div>
+    </div>
+
+    <div class="container">
+      <div class="col-md-12 thumbnail license-plate">
+        <div class="row license-plate__row">
+          <div class="col-md-6">
+              {!! Form::open(['method' => 'POST', 'class' => 'search-content', 'route' => ['find_tires']]) !!}
+              {!! Form::label('number', 'Søg via registreringsnummer', ['class' => 'license-plate__label']) !!}
+              {!! Form::text('number', old('number'), ['class' => 'search-content__input', 'placeholder' => 'Køretøjsregistreringsnummer', 'required' => '']) !!}
+              {!! Form::submit('Find De Bedste Daek', ['class' => 'search-content__btn']) !!}
+              {!! Form::close() !!}
+          </div>
+        </div>
+        <div class="license-plate__footer">
+          <p class="license-plate__text">Indtast venligst dit køretøjs registreringsnummer i feltet foroven,og klik "Find de bedste daek."Herefter vil vi finde det korrekte daek til dit koretoj.</p>
+        </div>
+        <img class="license-plate__img hidden-xs hidden-sm" src="{{asset('quickadmin/images/License-plate.png')}}" alt="License-plate">
+      </div>
     </div>
 
     <section class="section container wrap-tires">
